@@ -11,6 +11,22 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [showSignOutConfirmation, setShowSignOutConfirmation] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false); // Global theme state
+
+  // Apply theme class to body globally
+  useEffect(() => {
+    if (isLightMode) {
+      document.body.classList.add('light-mode');
+      document.documentElement.classList.add('light-mode'); // Also apply to html element
+    } else {
+      document.body.classList.remove('light-mode');
+      document.documentElement.classList.remove('light-mode');
+    }
+  }, [isLightMode]);
+
+  const toggleTheme = () => {
+    setIsLightMode(!isLightMode);
+  };
 
   const handleLogin = (userData) => {
     setIsLoggedIn(true);

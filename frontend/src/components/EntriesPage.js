@@ -52,32 +52,9 @@ const EntriesPage = ({ user, onLogout, isLightMode, toggleTheme }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [filteredEntries, setFilteredEntries] = useState(mockEntries);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const [themeMode, setThemeMode] = useState('dark');
 
-  const getThemeDisplay = () => {
-    switch (themeMode) {
-      case 'light': return 'Light';
-      case 'notebook': return 'Notebook';
-      default: return 'Dark';
-    }
-  };
-
-  const getThemeIcon = () => {
-    switch (themeMode) {
-      case 'light': return Sun;
-      case 'notebook': return BookOpen;
-      default: return Moon;
-    }
-  };
-
-  const toggleTheme = () => {
-    if (themeMode === 'dark') {
-      setThemeMode('light');
-    } else if (themeMode === 'light') {
-      setThemeMode('notebook');
-    } else {
-      setThemeMode('dark');
-    }
+  const handleLogout = () => {
+    onLogout();
   };
 
   const handleLogout = () => {

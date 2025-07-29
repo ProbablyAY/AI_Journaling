@@ -347,13 +347,6 @@ const UpgradePage = ({ user, onLogout, isLightMode, toggleTheme }) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="cyber-container border-0 w-56">
-                  <DropdownMenuItem 
-                    className="cyber-text-secondary hover:cyber-text-primary"
-                    onClick={toggleTheme}
-                  >
-                    {React.createElement(getThemeIcon(), { className: "h-4 w-4 mr-2" })}
-                    Theme: {getThemeDisplay()}
-                  </DropdownMenuItem>
                   <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
                     <CreditCard className="h-4 w-4 mr-2" />
                     Manage Subscription

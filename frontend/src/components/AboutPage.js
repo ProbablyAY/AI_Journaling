@@ -255,7 +255,7 @@ const AboutPage = ({ onNavigate }) => {
           <p className="modern-font text-lg cyber-text-secondary mb-8">
             Start your journey of self-discovery today with interactive AI conversations. No credit card required.
           </p>
-          <Button className="cyber-button-primary modern-font text-lg px-8 py-4" onClick={() => onNavigate('home')}>
+          <Button className="cyber-button-primary modern-font text-lg px-8 py-4" onClick={() => setCurrentPage('auth')}>
             <Sparkles className="h-5 w-5 mr-2" />
             <span className="text-white">Start Your Interactive Journey</span>
           </Button>

@@ -413,6 +413,12 @@ const Dashboard = ({ user, onLogout }) => {
       gradient: "from-blue-400 to-indigo-500"
     },
     { 
+      icon: Heart, 
+      label: "Write a letter to your future self!", 
+      onClick: () => {},
+      gradient: "from-pink-400 to-rose-500"
+    },
+    { 
       icon: FileText, 
       label: "Export Entries", 
       onClick: () => {},

@@ -162,11 +162,6 @@ const Dashboard = ({ user, onLogout }) => {
   };
 
   const handleLogout = () => {
-    setShowLogoutDialog(true);
-  };
-
-  const confirmLogout = () => {
-    setShowLogoutDialog(false);
     onLogout();
   };
 

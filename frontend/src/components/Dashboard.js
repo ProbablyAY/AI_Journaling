@@ -1004,41 +1004,6 @@ const Dashboard = ({ user, onLogout }) => {
           </div>
         </div>
       </div>
-
-      {/* Logout Confirmation Dialog */}
-      <Dialog open={showLogoutDialog} onOpenChange={setShowLogoutDialog}>
-        <DialogContent className="cyber-container border-0 max-w-md">
-          <DialogHeader className="text-center">
-            <DialogTitle className="tech-font text-xl cyber-text-primary mb-4">
-              Sign Out Confirmation
-            </DialogTitle>
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center">
-                <LogOut className="h-8 w-8 text-white" />
-              </div>
-            </div>
-            <p className="modern-font cyber-text-secondary">
-              Are you sure you want to sign out of your account?
-            </p>
-          </DialogHeader>
-          <div className="flex space-x-3 mt-6">
-            <Button 
-              variant="outline" 
-              className="flex-1 cyber-button-secondary"
-              onClick={() => setShowLogoutDialog(false)}
-            >
-              Cancel
-            </Button>
-            <Button 
-              className="flex-1 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white"
-              onClick={confirmLogout}
-            >
-              <LogOut className="h-4 w-4 mr-2" />
-              Sign Out
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };

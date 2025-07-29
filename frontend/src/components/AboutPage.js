@@ -253,11 +253,11 @@ const AboutPage = ({ onNavigate }) => {
             Ready to Transform Your Journaling?
           </h2>
           <p className="modern-font text-lg cyber-text-secondary mb-8">
-            Start your journey of self-discovery today. No credit card required.
+            Start your journey of self-discovery today with interactive AI conversations. No credit card required.
           </p>
           <Button className="cyber-button-primary modern-font text-lg px-8 py-4" onClick={() => onNavigate('home')}>
             <Sparkles className="h-5 w-5 mr-2" />
-            <span className="text-white">Start Your Journey</span>
+            <span className="text-white">Start Your Interactive Journey</span>
           </Button>
         </div>
       </div>

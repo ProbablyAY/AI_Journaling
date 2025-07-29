@@ -830,8 +830,8 @@ const Dashboard = ({ user, onLogout, isLightMode, toggleTheme }) => {
                   className="cyber-text-secondary hover:cyber-text-primary"
                   onClick={toggleTheme}
                 >
-                  {React.createElement(getThemeIcon(), { className: "h-4 w-4 mr-2" })}
-                  Theme: {getThemeDisplay()}
+                  {isLightMode ? <Sun className="h-4 w-4 mr-2" /> : <Moon className="h-4 w-4 mr-2" />}
+                  Theme: {isLightMode ? 'Light' : 'Dark'}
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary" onClick={() => navigate('/upgrade')}>
                   <CreditCard className="h-4 w-4 mr-2" />

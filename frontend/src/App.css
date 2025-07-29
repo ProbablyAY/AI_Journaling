@@ -823,31 +823,12 @@
   color: #2c3e50 !important;
 }
 
-/* Best Value Plan - Gold Outline */
+/* Light Mode - Best Value Plan - Gold Outline Only (No Fill) */
 .light-mode .pricing-card[data-plan="Standard"] {
   border: 3px solid #f59e0b !important; /* Gold border */
   box-shadow: 0 0 20px rgba(245, 158, 11, 0.3) !important; /* Gold glow */
+  background: var(--card-bg) !important; /* Keep paper background, no gold fill */
   position: relative;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(251, 191, 36, 0.05) 100%) !important;
-}
-
-.light-mode .pricing-card[data-plan="Standard"]::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b, #fbbf24);
-  border-radius: inherit;
-  z-index: -1;
-  background-size: 400% 400%;
-  animation: goldShimmer 3s ease-in-out infinite;
-}
-
-@keyframes goldShimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
 }
 
 /* All pricing cards in light mode */
@@ -875,22 +856,95 @@
   color: #2c3e50 !important;
 }
 
-/* Enhanced Best Value badge for light mode */
+/* Light Mode - Enhanced Best Value badge to match dark mode design */
 .light-mode .bg-gradient-to-r.from-green-500.to-emerald-500 {
-  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%) !important; /* Gold gradient */
-  color: #1f2937 !important; /* Dark text on gold */
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important; /* Green gradient like dark mode */
+  color: white !important;
   font-weight: 700 !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
-  border: 1px solid #d97706 !important;
+  border: 1px solid #059669 !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
 }
 
-/* Most Popular badge enhancement for light mode */
+/* Light Mode - Most Popular badge enhancement to match dark mode */
 .light-mode .popular-badge {
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
   color: white !important;
   font-weight: 600 !important;
-  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3) !important;
-  border: 1px solid #c0392b !important;
+  border: 1px solid #dc2626 !important;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Dark Mode - Best Value Plan - Neon Blue Outline */
+.pricing-card[data-plan="Standard"] {
+  border: 3px solid #00d4ff !important; /* Neon blue border */
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.4), 0 0 50px rgba(0, 212, 255, 0.2) !important; /* Neon blue glow */
+  position: relative;
+}
+
+.pricing-card[data-plan="Standard"]::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #00d4ff, #0ea5e9, #00d4ff, #0ea5e9);
+  border-radius: inherit;
+  z-index: -1;
+  background-size: 400% 400%;
+  animation: neonPulse 3s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes neonPulse {
+  0%, 100% { 
+    background-position: 0% 50%;
+    opacity: 0.3;
+  }
+  50% { 
+    background-position: 100% 50%;
+    opacity: 0.6;
+  }
+}
+
+/* Dark Mode - Enhanced Best Value badge */
+.bg-gradient-to-r.from-green-500.to-emerald-500 {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border: 1px solid #059669 !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.2) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+/* Dark Mode - Enhanced Most Popular badge */
+.popular-badge {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border: 1px solid #dc2626 !important;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.2) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Custom Red Scrollbars for Light Mode */

@@ -68,19 +68,24 @@ const Dashboard = ({ user, onLogout }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [themeMode, setThemeMode] = useState('dark'); // 'dark', 'light', 'notebook'
   const [aiMessage, setAiMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
   // Apply theme class to body
   useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.remove('light-mode');
-    } else {
+    // Remove all theme classes first
+    document.body.classList.remove('light-mode', 'notebook-mode');
+    
+    // Apply the current theme
+    if (themeMode === 'light') {
       document.body.classList.add('light-mode');
+    } else if (themeMode === 'notebook') {
+      document.body.classList.add('notebook-mode');
     }
-  }, [isDarkMode]);
+    // Dark mode is the default, no class needed
+  }, [themeMode]);
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -23,7 +23,21 @@ import {
   Sparkles,
   Zap,
   TrendingUp,
-  Archive
+  Archive,
+  Users,
+  Bell,
+  Heart,
+  FileText,
+  Headphones,
+  Gift,
+  GraduationCap,
+  HelpCircle,
+  Code,
+  ChevronDown,
+  UserPlus,
+  Sun,
+  Moon,
+  CreditCard
 } from 'lucide-react';
 import { mockEntries } from '../mock';
 

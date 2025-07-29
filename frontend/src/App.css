@@ -703,6 +703,89 @@
   min-height: 100vh;
 }
 
+/* Light Mode Specific Color Fixes */
+
+/* Fix button text - make all button text black instead of gray */
+.light-mode button {
+  color: #2c3e50 !important;
+}
+
+.light-mode .cyber-button-primary {
+  color: white !important; /* Keep primary buttons white text */
+}
+
+/* Fix scroll options and navigation text - make black */
+.light-mode .nav-hover {
+  color: #2c3e50 !important;
+}
+
+.light-mode .nav-hover:hover {
+  color: #e74c3c !important;
+}
+
+/* Fix badges - make them solid instead of transparent */
+.light-mode .badge,
+.light-mode .Badge {
+  background: #8b4513 !important;
+  color: white !important;
+  border: 1px solid #8b4513 !important;
+}
+
+/* Fix purple/transparent badges like "Reflective", "Grateful" - make solid */
+.light-mode .bg-purple-500\/20,
+.light-mode .bg-gradient-to-r {
+  background: #8b4513 !important;
+  color: white !important;
+  border: 1px solid #8b4513 !important;
+}
+
+/* Fix profile name - make black */
+.light-mode .profile-name,
+.light-mode span {
+  color: #2c3e50 !important;
+}
+
+/* Fix Updates and WIP badges - make solid red */
+.light-mode .bg-red-500\/20 {
+  background: #e74c3c !important;
+  color: white !important;
+  border: 1px solid #e74c3c !important;
+}
+
+.light-mode .text-red-300 {
+  color: white !important;
+}
+
+.light-mode .border-red-500\/30 {
+  border-color: #e74c3c !important;
+}
+
+/* Fix any remaining transparent elements */
+.light-mode [class*="bg-"][class*="\/"] {
+  opacity: 1 !important;
+}
+
+/* Make all text in cards and sections readable */
+.light-mode .cyber-card span,
+.light-mode .cyber-card p,
+.light-mode .cyber-card div {
+  color: #2c3e50 !important;
+}
+
+/* Keep specific accent text as red */
+.light-mode .cyber-text-accent,
+.light-mode .cyber-text-neon {
+  color: #e74c3c !important;
+}
+
+/* Fix any badge variants */
+.light-mode .badge-secondary,
+.light-mode [class*="badge"] {
+  background: #8b4513 !important;
+  color: white !important;
+  border: 1px solid #8b4513 !important;
+}
+
 /* Remove the notebook-mode class styles since light-mode now handles it */
 
 /* Text clamping utilities */

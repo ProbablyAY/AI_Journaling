@@ -66,13 +66,13 @@ const AboutPage = ({ onNavigate }) => {
     {
       step: "1",
       title: "Start Talking",
-      description: "Open EchoDiary and simply start speaking. No prompts needed - just talk naturally about your day.",
+      description: "Open EchoDiary and our AI companion begins an interactive voice conversation, asking you personalized questions about your day and guiding the discussion naturally.",
       icon: MessageCircle
     },
     {
       step: "2", 
-      title: "AI Processes",
-      description: "Our advanced AI listens, understands context, and formats your thoughts into beautiful journal entries.",
+      title: "AI Engages & Listens",
+      description: "Experience a real conversation - our AI responds to your answers, asks follow-up questions, and adapts to your mood and topics, just like talking to an understanding friend.",
       icon: Brain
     },
     {

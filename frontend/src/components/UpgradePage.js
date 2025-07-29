@@ -130,6 +130,12 @@ const UpgradePage = ({ user, onLogout }) => {
       active: true
     },
     { 
+      icon: Settings, 
+      label: "Settings", 
+      onClick: () => {},
+      gradient: "from-gray-400 to-slate-500"
+    },
+    { 
       icon: Headphones, 
       label: "Contact Us", 
       onClick: () => {},

@@ -137,11 +137,11 @@ const LandingPage = ({ onLogin }) => {
                     <form onSubmit={handleSubmit} className="space-y-4">
                       {isSignUp && (
                         <div>
-                          <Label htmlFor="fullName" className="modern-font cyber-text-secondary mb-2 block">
+                          <Label htmlFor="fullName2" className="modern-font cyber-text-secondary mb-2 block">
                             Full Name
                           </Label>
                           <Input
-                            id="fullName"
+                            id="fullName2"
                             name="fullName"
                             type="text"
                             value={formData.fullName}
@@ -153,11 +153,11 @@ const LandingPage = ({ onLogin }) => {
                       )}
                       
                       <div>
-                        <Label htmlFor="email" className="modern-font cyber-text-secondary mb-2 block">
+                        <Label htmlFor="email2" className="modern-font cyber-text-secondary mb-2 block">
                           Email Address
                         </Label>
                         <Input
-                          id="email"
+                          id="email2"
                           name="email"
                           type="email"
                           value={formData.email}
@@ -168,11 +168,11 @@ const LandingPage = ({ onLogin }) => {
                       </div>
                       
                       <div>
-                        <Label htmlFor="password" className="modern-font cyber-text-secondary mb-2 block">
+                        <Label htmlFor="password2" className="modern-font cyber-text-secondary mb-2 block">
                           Password
                         </Label>
                         <Input
-                          id="password"
+                          id="password2"
                           name="password"
                           type="password"
                           value={formData.password}
@@ -184,11 +184,11 @@ const LandingPage = ({ onLogin }) => {
                       
                       {isSignUp && (
                         <div>
-                          <Label htmlFor="confirmPassword" className="modern-font cyber-text-secondary mb-2 block">
+                          <Label htmlFor="confirmPassword2" className="modern-font cyber-text-secondary mb-2 block">
                             Confirm Password
                           </Label>
                           <Input
-                            id="confirmPassword"
+                            id="confirmPassword2"
                             name="confirmPassword"
                             type="password"
                             value={formData.confirmPassword}

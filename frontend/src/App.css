@@ -703,9 +703,9 @@
   min-height: 100vh;
 }
 
-/* Light Mode Specific Color Fixes */
+/* Light Mode Specific Color Fixes - Keep Original Colors, Just Make Solid */
 
-/* Fix button text - make all button text black instead of gray */
+/* Fix button text - make black instead of gray */
 .light-mode button {
   color: #2c3e50 !important;
 }
@@ -714,29 +714,78 @@
   color: white !important; /* Keep primary buttons white text */
 }
 
-/* Fix scroll options and navigation text - make black */
-.light-mode .nav-hover {
-  color: #2c3e50 !important;
-}
-
-.light-mode .nav-hover:hover {
-  color: #e74c3c !important;
-}
-
-/* Fix badges - make them solid instead of transparent */
-.light-mode .badge,
-.light-mode .Badge {
-  background: #8b4513 !important;
+/* Fix purple badges - keep purple but make solid */
+.light-mode .bg-purple-500\/20 {
+  background: #a855f7 !important; /* Solid purple instead of transparent */
   color: white !important;
-  border: 1px solid #8b4513 !important;
+  border: 1px solid #a855f7 !important;
 }
 
-/* Fix purple/transparent badges like "Reflective", "Grateful" - make solid */
-.light-mode .bg-purple-500\/20,
-.light-mode .bg-gradient-to-r {
-  background: #8b4513 !important;
+.light-mode .border-purple-500\/30 {
+  border-color: #a855f7 !important;
+}
+
+.light-mode .text-purple-300 {
+  color: white !important; /* White text on solid purple background */
+}
+
+/* Fix red badges - keep red but make solid */
+.light-mode .bg-red-500\/20 {
+  background: #ef4444 !important; /* Solid red instead of transparent */
   color: white !important;
-  border: 1px solid #8b4513 !important;
+  border: 1px solid #ef4444 !important;
+}
+
+.light-mode .border-red-500\/30 {
+  border-color: #ef4444 !important;
+}
+
+.light-mode .text-red-300 {
+  color: white !important; /* White text on solid red background */
+}
+
+/* Fix cyan badges - keep cyan but make solid */
+.light-mode .bg-cyan-500\/20 {
+  background: #06b6d4 !important; /* Solid cyan instead of transparent */
+  color: white !important;
+  border: 1px solid #06b6d4 !important;
+}
+
+.light-mode .border-cyan-500\/30 {
+  border-color: #06b6d4 !important;
+}
+
+/* Fix blue badges - keep blue but make solid */
+.light-mode .bg-blue-500\/20 {
+  background: #3b82f6 !important; /* Solid blue instead of transparent */
+  color: white !important;
+  border: 1px solid #3b82f6 !important;
+}
+
+.light-mode .border-blue-500\/30 {
+  border-color: #3b82f6 !important;
+}
+
+/* Fix green badges - keep green but make solid */
+.light-mode .bg-green-500\/20 {
+  background: #22c55e !important; /* Solid green instead of transparent */
+  color: white !important;
+  border: 1px solid #22c55e !important;
+}
+
+.light-mode .border-green-500\/30 {
+  border-color: #22c55e !important;
+}
+
+/* Fix orange badges - keep orange but make solid */
+.light-mode .bg-orange-500\/20 {
+  background: #f97316 !important; /* Solid orange instead of transparent */
+  color: white !important;
+  border: 1px solid #f97316 !important;
+}
+
+.light-mode .border-orange-500\/30 {
+  border-color: #f97316 !important;
 }
 
 /* Fix profile name - make black */
@@ -745,45 +794,26 @@
   color: #2c3e50 !important;
 }
 
-/* Fix Updates and WIP badges - make solid red */
-.light-mode .bg-red-500\/20 {
-  background: #e74c3c !important;
-  color: white !important;
-  border: 1px solid #e74c3c !important;
-}
-
-.light-mode .text-red-300 {
-  color: white !important;
-}
-
-.light-mode .border-red-500\/30 {
-  border-color: #e74c3c !important;
-}
-
-/* Fix any remaining transparent elements */
-.light-mode [class*="bg-"][class*="\/"] {
-  opacity: 1 !important;
-}
-
-/* Make all text in cards and sections readable */
-.light-mode .cyber-card span,
-.light-mode .cyber-card p,
-.light-mode .cyber-card div {
+/* Fix navigation text */
+.light-mode .nav-hover {
   color: #2c3e50 !important;
 }
 
-/* Keep specific accent text as red */
-.light-mode .cyber-text-accent,
-.light-mode .cyber-text-neon {
+.light-mode .nav-hover:hover {
   color: #e74c3c !important;
 }
 
-/* Fix any badge variants */
-.light-mode .badge-secondary,
-.light-mode [class*="badge"] {
-  background: #8b4513 !important;
-  color: white !important;
-  border: 1px solid #8b4513 !important;
+/* Make all text in cards readable */
+.light-mode .cyber-card span:not(.badge):not([class*="badge"]),
+.light-mode .cyber-card p,
+.light-mode .cyber-card div:not(.badge):not([class*="badge"]) {
+  color: #2c3e50 !important;
+}
+
+/* Keep accent text as red */
+.light-mode .cyber-text-accent,
+.light-mode .cyber-text-neon {
+  color: #e74c3c !important;
 }
 
 /* Remove the notebook-mode class styles since light-mode now handles it */

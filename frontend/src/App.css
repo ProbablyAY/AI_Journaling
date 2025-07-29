@@ -15,6 +15,25 @@
   right: 0;
   bottom: 0;
   background-image: 
+    /* Notebook lines with neon glow */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      rgba(0, 212, 255, 0.1) 27px,
+      rgba(0, 212, 255, 0.1) 28px,
+      transparent 28px,
+      transparent 55px
+    ),
+    /* Vertical margin line */
+    linear-gradient(
+      90deg,
+      transparent 79px,
+      rgba(255, 119, 198, 0.15) 79px,
+      rgba(255, 119, 198, 0.15) 81px,
+      transparent 81px
+    ),
+    /* Ambient gradients */
     radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.05) 0%, transparent 50%);
@@ -29,15 +48,30 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 2px,
-    rgba(120, 119, 198, 0.02) 2px,
-    rgba(120, 119, 198, 0.02) 4px
-  );
+  background: 
+    /* More floating dots */
+    radial-gradient(circle at 15% 25%, rgba(0, 212, 255, 0.4) 1px, transparent 1px),
+    radial-gradient(circle at 85% 15%, rgba(255, 119, 198, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 25% 75%, rgba(120, 119, 198, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 75% 85%, rgba(0, 212, 255, 0.2) 1px, transparent 1px),
+    radial-gradient(circle at 45% 35%, rgba(255, 119, 198, 0.2) 1px, transparent 1px),
+    radial-gradient(circle at 65% 55%, rgba(120, 119, 198, 0.2) 1px, transparent 1px),
+    radial-gradient(circle at 35% 65%, rgba(0, 212, 255, 0.2) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 120px 120px, 180px 180px, 90px 90px, 140px 140px, 110px 110px;
   pointer-events: none;
   z-index: 2;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-10px);
+  }
 }
 
 .cyber-container {

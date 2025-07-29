@@ -854,6 +854,10 @@ const Dashboard = ({ user, onLogout }) => {
                   Manage Subscription
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Settings
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
                   <Gift className="h-4 w-4 mr-2" />
                   Earn Free Credits
                 </DropdownMenuItem>

@@ -48,6 +48,7 @@ const UpgradePage = ({ user, onLogout }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('Standard');
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   const handlePlanSelect = (planName) => {

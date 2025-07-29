@@ -985,49 +985,6 @@ const Dashboard = ({ user, onLogout }) => {
                 </div>
               </div>
             )}
-
-            {!showTranscript && (
-              <div className="mb-12">
-                <div className="flex items-center space-x-3 mb-6">
-                  <BookOpen className="h-6 w-6 cyber-text-accent" />
-                  <h3 className="tech-font text-2xl font-semibold cyber-text-primary">
-                    Recent Entries
-                  </h3>
-                </div>
-                
-                <div className="grid gap-6">
-                  <div className="cyber-card p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <p className="modern-font text-sm cyber-text-secondary mb-2">
-                          Yesterday, 7:30 PM
-                        </p>
-                        <Badge variant="secondary" className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-purple-500/30 cyber-text-accent">
-                          Reflective
-                        </Badge>
-                      </div>
-                      <div className="flex space-x-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-300"></div>
-                      </div>
-                    </div>
-                    
-                    <p className="modern-font cyber-text-secondary leading-relaxed">
-                      Today was actually pretty interesting. I had this meeting with my team and we finally solved that problem we've been working on for weeks...
-                    </p>
-                  </div>
-                  
-                  <Button 
-                    variant="outline" 
-                    className="cyber-button-secondary modern-font"
-                    onClick={() => navigate('/entries')}
-                  >
-                    <BookOpen className="h-4 w-4 mr-2" />
-                    View All Entries
-                  </Button>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

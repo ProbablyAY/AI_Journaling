@@ -55,7 +55,7 @@ const EntriesPage = ({ user, onLogout }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   const handleLogout = () => {
-    setShowLogoutDialog(true);
+    onLogout();
   };
 
   const confirmLogout = () => {

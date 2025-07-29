@@ -68,6 +68,10 @@ const Dashboard = ({ user, onLogout }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [aiMessage, setAiMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {

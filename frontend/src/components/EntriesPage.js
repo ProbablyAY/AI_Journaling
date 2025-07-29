@@ -353,6 +353,66 @@ const EntriesPage = ({ user, onLogout }) => {
           <div className="w-8"></div>
         </div>
 
+        {/* Desktop Top Bar */}
+        <div className="hidden md:block bg-gradient-to-r from-slate-900/50 to-purple-900/30 border-b border-purple-500/20 px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Archive className="h-8 w-8 cyber-text-neon" />
+              <div>
+                <h1 className="tech-font text-xl font-bold cyber-text-primary">My Entries</h1>
+                <p className="modern-font text-sm cyber-text-secondary">Browse, search, and manage your journal entries</p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-3">
+              <Button size="sm" className="cyber-button-primary" onClick={() => navigate('/upgrade')}>
+                <Crown className="h-4 w-4 mr-2" />
+                Upgrade
+              </Button>
+              
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2 cyber-text-secondary hover:cyber-text-primary">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src="/placeholder-avatar.jpg" />
+                      <AvatarFallback className="bg-gradient-to-r from-cyan-400 to-purple-500 text-white">
+                        {user?.name?.charAt(0) || 'U'}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="hidden md:inline modern-font text-sm">{user?.name}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="cyber-container border-0 w-56">
+                  <DropdownMenuItem 
+                    className="cyber-text-secondary hover:cyber-text-primary"
+                    onClick={() => setIsDarkMode(!isDarkMode)}
+                  >
+                    {isDarkMode ? <Sun className="h-4 w-4 mr-2" /> : <Moon className="h-4 w-4 mr-2" />}
+                    Theme: {isDarkMode ? 'Dark' : 'Light'}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary" onClick={() => navigate('/upgrade')}>
+                    <CreditCard className="h-4 w-4 mr-2" />
+                    Manage Subscription
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
+                    <Gift className="h-4 w-4 mr-2" />
+                    Earn Free Credits
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="bg-purple-500/20" />
+                  <DropdownMenuItem 
+                    className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    {showLogoutConfirm ? 'Are you sure? Click to confirm' : 'Sign Out'}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </div>
+
         {/* Entries Content */}
         <div className="h-full p-6 overflow-y-auto">
           <div className="max-w-6xl mx-auto">

@@ -759,11 +759,11 @@ const Dashboard = ({ user, onLogout }) => {
           </div>
 
           {/* Bottom Section - Support & Subscription */}
-          <div className="px-6 py-4 flex-1">
+          <div className="px-6 py-4">
             <h4 className="tech-font text-sm font-semibold cyber-text-accent mb-3 uppercase tracking-wider">
               Subscription & Support
             </h4>
-            <div className="space-y-1">
+            <div className="space-y-1 mb-4">
               {supportItems.map((item, index) => (
                 <button
                   key={index}
@@ -777,10 +777,8 @@ const Dashboard = ({ user, onLogout }) => {
                 </button>
               ))}
             </div>
-          </div>
-
-          {/* Referral Section */}
-          <div className="px-6 py-4 border-t border-purple-500/20">
+            
+            {/* Referral Section - Inline */}
             <div className="cyber-card p-4 text-center">
               <UserPlus className="h-6 w-6 mx-auto mb-2 cyber-text-neon" />
               <h4 className="tech-font text-sm font-semibold cyber-text-primary mb-1">

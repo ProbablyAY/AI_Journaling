@@ -404,7 +404,7 @@ const Dashboard = ({ user, onLogout }) => {
     },
     { 
       icon: Heart, 
-      label: "Write a letter to your future self!", 
+      label: "Write to Future Self", 
       onClick: () => {},
       gradient: "from-pink-400 to-rose-500"
     },

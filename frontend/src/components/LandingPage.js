@@ -109,144 +109,19 @@ const LandingPage = ({ onLogin }) => {
               <Home className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Home</span>
             </Button>
-            <Button variant="ghost" className="cyber-text-secondary hover:cyber-text-primary modern-font">
+            <Button variant="ghost" className="cyber-text-secondary hover:cyber-text-primary modern-font" onClick={() => setCurrentPage('about')}>
               <Info className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">About</span>
             </Button>
-            <Button variant="ghost" className="cyber-text-secondary hover:cyber-text-primary modern-font">
+            <Button variant="ghost" className="cyber-text-secondary hover:cyber-text-primary modern-font" onClick={() => setCurrentPage('contact')}>
               <Mail className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Contact</span>
             </Button>
-            <Dialog open={showAuthModal} onOpenChange={setShowAuthModal}>
-              <DialogTrigger asChild>
-                <Button className="cyber-button-primary modern-font">
-                  <Mic className="h-4 w-4 mr-2" />
-                  <span className="hidden md:inline">Start Journaling</span>
-                  <span className="md:hidden">Start</span>
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="cyber-container max-w-md border-0 max-h-[80vh] overflow-y-auto my-8">
-                <div className="flex flex-col h-full">
-                  <DialogHeader className="flex-shrink-0">
-                    <DialogTitle className="tech-font text-2xl cyber-text-primary text-center mb-4">
-                      {isSignUp ? (
-                        <span className="gradient-text">Join EchoDiary</span>
-                      ) : (
-                        <span className="gradient-text">Welcome Back</span>
-                      )}
-                    </DialogTitle>
-                  </DialogHeader>
-                  
-                  <div className="flex-1 overflow-y-auto px-1">
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      {isSignUp && (
-                        <div>
-                          <Label htmlFor="fullName2" className="modern-font cyber-text-secondary mb-2 block">
-                            Full Name
-                          </Label>
-                          <Input
-                            id="fullName2"
-                            name="fullName"
-                            type="text"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            className="cyber-input modern-font"
-                            required
-                          />
-                        </div>
-                      )}
-                      
-                      <div>
-                        <Label htmlFor="email2" className="modern-font cyber-text-secondary mb-2 block">
-                          Email Address
-                        </Label>
-                        <Input
-                          id="email2"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="cyber-input modern-font"
-                          required
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="password2" className="modern-font cyber-text-secondary mb-2 block">
-                          Password
-                        </Label>
-                        <Input
-                          id="password2"
-                          name="password"
-                          type="password"
-                          value={formData.password}
-                          onChange={handleInputChange}
-                          className="cyber-input modern-font"
-                          required
-                        />
-                      </div>
-                      
-                      {isSignUp && (
-                        <div>
-                          <Label htmlFor="confirmPassword2" className="modern-font cyber-text-secondary mb-2 block">
-                            Confirm Password
-                          </Label>
-                          <Input
-                            id="confirmPassword2"
-                            name="confirmPassword"
-                            type="password"
-                            value={formData.confirmPassword}
-                            onChange={handleInputChange}
-                            className="cyber-input modern-font"
-                            required
-                          />
-                        </div>
-                      )}
-                      
-                      <Button type="submit" className="cyber-button-primary modern-font w-full py-3 font-semibold">
-                        <span className="text-white">
-                          {isSignUp ? 'Create Account' : 'Sign In'}
-                        </span>
-                      </Button>
-                      
-                      <div className="relative my-4">
-                        <div className="absolute inset-0 flex items-center">
-                          <div className="w-full border-t border-gray-600"></div>
-                        </div>
-                        <div className="relative flex justify-center text-sm">
-                          <span className="bg-slate-900 px-2 cyber-text-secondary">Or continue with</span>
-                        </div>
-                      </div>
-                      
-                      <div className="grid grid-cols-3 gap-3">
-                        <Button type="button" variant="outline" className="cyber-button-secondary text-xs py-2">
-                          Google
-                        </Button>
-                        <Button type="button" variant="outline" className="cyber-button-secondary text-xs py-2">
-                          Apple
-                        </Button>
-                        <Button type="button" variant="outline" className="cyber-button-secondary text-xs py-2">
-                          GitHub
-                        </Button>
-                      </div>
-                      
-                      <div className="text-center pt-4">
-                        <button
-                          type="button"
-                          onClick={toggleAuthMode}
-                          className="modern-font text-sm cyber-text-neon hover:underline transition-colors"
-                        >
-                          {isSignUp 
-                            ? 'Already have an account? Sign in' 
-                            : "Don't have an account? Sign up"
-                          }
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
+            <Button className="cyber-button-primary modern-font" onClick={handleStartJourney}>
+              <Mic className="h-4 w-4 mr-2" />
+              <span className="hidden md:inline">Start Journaling</span>
+              <span className="md:hidden">Start</span>
+            </Button>
           </div>
         </div>
       </nav>

@@ -153,12 +153,12 @@ const Dashboard = ({ user, onLogout }) => {
   };
 
   const handleLogout = () => {
-    if (showLogoutConfirm) {
-      onLogout();
-    } else {
-      setShowLogoutConfirm(true);
-      setTimeout(() => setShowLogoutConfirm(false), 5000); // Increased timeout for better UX
-    }
+    setShowLogoutDialog(true);
+  };
+
+  const confirmLogout = () => {
+    setShowLogoutDialog(false);
+    onLogout();
   };
 
   const handlePageNavigation = (page) => {

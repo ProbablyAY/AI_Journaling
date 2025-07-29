@@ -855,98 +855,139 @@ const Dashboard = ({ user, onLogout }) => {
         {/* Main Journaling Area */}
         <div className="flex-1 p-6 overflow-y-auto">
           <div className="max-w-4xl mx-auto">
-            {/* Header */}
+            {/* AI Companion Header */}
             <div className="text-center mb-12">
               <h1 className="tech-font text-5xl font-bold cyber-text-primary mb-4">
                 Let's talk about your day
               </h1>
               <div className="flex items-center justify-center space-x-3 mb-6">
                 <MessageCircle className="h-6 w-6 cyber-text-neon" />
-                <p className="modern-font text-xl cyber-text-secondary writing-animation">
-                  {currentPrompt}
+                <p className="modern-font text-xl cyber-text-secondary">
+                  <span className="cyber-text-neon">
+                    {aiMessage}
+                    {isTyping && <span className="animate-pulse">|</span>}
+                  </span>
                 </p>
               </div>
             </div>
 
-            {/* Recording Interface */}
-            <div className="text-center space-y-8 mb-12">
-              {/* Enhanced Mic Button */}
-              <div className="flex justify-center">
-                <button
-                  onClick={handleRecord}
-                  data-testid="mic-button"
-                  className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-300 floating-mic ${
-                    isRecording ? 'recording' : ''
-                  }`}
-                >
-                  <Mic className="h-12 w-12 text-white" />
-                </button>
+            {/* Dashboard Content Sections */}
+            <div className="space-y-8 mb-12">
+              {/* Write an Entry Section */}
+              <div className="cyber-card p-8 text-center">
+                <div className="flex items-center justify-center space-x-3 mb-4">
+                  <Edit className="h-6 w-6 cyber-text-neon" />
+                  <h2 className="tech-font text-2xl font-bold cyber-text-primary">
+                    Write an Entry
+                  </h2>
+                </div>
+                <p className="modern-font text-lg cyber-text-secondary mb-6">
+                  Luna is eagerly awaiting to talk about your day!
+                </p>
+                <Button className="cyber-button-primary text-lg px-8 py-4">
+                  <Mic className="h-5 w-5 mr-2" />
+                  <span className="text-white">Start Recording</span>
+                </Button>
               </div>
 
-              <div className="space-y-2">
-                <p className="modern-font text-xl cyber-text-primary font-semibold">
-                  {isRecording ? 'Recording... Tap to stop' : 'Tap to start recording'}
-                </p>
-                <p className="modern-font text-sm cyber-text-secondary">
-                  Speak naturally, I'll handle the rest
-                </p>
+              {/* Explore Previous Entries Section */}
+              <div className="cyber-card p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="h-6 w-6 cyber-text-accent" />
+                    <h2 className="tech-font text-2xl font-bold cyber-text-primary">
+                      Explore Previous Entries
+                    </h2>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    className="cyber-button-secondary"
+                    onClick={() => navigate('/entries')}
+                  >
+                    View More
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </div>
+                
+                <div className="flex space-x-4 overflow-x-auto pb-4">
+                  {mockEntries.slice(0, 4).map((entry, index) => (
+                    <div key={index} className="flex-shrink-0 w-80 cyber-card p-4 hover:scale-105 transition-transform">
+                      <div className="flex items-center justify-between mb-3">
+                        <Badge className={`bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-purple-500/30 text-purple-300`}>
+                          {entry.mood}
+                        </Badge>
+                        <span className="text-xs cyber-text-secondary">{new Date(entry.date).toLocaleDateString()}</span>
+                      </div>
+                      <h3 className="tech-font font-semibold cyber-text-primary mb-2 line-clamp-1">
+                        Entry #{entry.id}
+                      </h3>
+                      <p className="modern-font text-sm cyber-text-secondary line-clamp-3 mb-3">
+                        {entry.preview}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-3 w-3 cyber-text-accent" />
+                          <span className="text-xs cyber-text-secondary">{entry.duration}</span>
+                        </div>
+                        <Button size="sm" variant="ghost" className="cyber-text-neon hover:cyber-text-primary">
+                          Read
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* This Moment One Year Ago Section */}
+              <div className="cyber-card p-8 text-center">
+                <div className="flex items-center justify-center space-x-3 mb-4">
+                  <Sparkles className="h-6 w-6 cyber-text-accent" />
+                  <h2 className="tech-font text-2xl font-bold cyber-text-primary">
+                    This Moment One Year Ago
+                  </h2>
+                </div>
+                <div className="bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-lg p-6 border border-purple-500/20">
+                  <p className="modern-font cyber-text-secondary mb-4">
+                    Discover what you were thinking about exactly one year ago today...
+                  </p>
+                  <Button variant="outline" className="cyber-button-secondary">
+                    <Heart className="h-4 w-4 mr-2" />
+                    View Memory
+                  </Button>
+                </div>
               </div>
             </div>
 
-            {/* Enhanced Transcript Area */}
+            {/* Recent Entries Summary (keeping existing) */}
             {showTranscript && (
               <div className="mb-12 fade-in">
                 <div className="transcript-card p-8">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-3">
                       <Zap className="h-6 w-6 cyber-text-neon" />
-                      <h3 className="tech-font text-xl font-semibold cyber-text-primary">Your Entry</h3>
+                      <h3 className="tech-font text-xl font-semibold cyber-text-primary">Live Transcript</h3>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
+                    <Button 
                       onClick={clearTranscript}
+                      variant="ghost" 
+                      size="sm"
                       className="cyber-text-secondary hover:cyber-text-primary"
                     >
                       <X className="h-4 w-4" />
                     </Button>
                   </div>
-                  
-                  <div className="prose prose-invert max-w-none">
+                  <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/20 rounded-lg p-6 border border-cyan-500/20">
                     <p className="modern-font text-lg cyber-text-secondary leading-relaxed">
                       {transcriptText}
+                      {isRecording && <span className="inline-block w-2 h-5 bg-cyan-400 ml-2 animate-pulse"></span>}
                     </p>
                   </div>
-                  
-                  {!isRecording && transcriptText && (
-                    <div className="mt-8 pt-6 border-t border-purple-500/20">
-                      <div className="flex flex-wrap gap-3">
-                        <Button variant="outline" size="sm" className="cyber-button-secondary">
-                          <Edit className="h-4 w-4 mr-2" />
-                          Edit
-                        </Button>
-                        <Button variant="outline" size="sm" className="cyber-button-secondary">
-                          <Share className="h-4 w-4 mr-2" />
-                          Export
-                        </Button>
-                        <Button variant="outline" size="sm" className="cyber-button-secondary">
-                          <Tag className="h-4 w-4 mr-2" />
-                          Add Tags
-                        </Button>
-                        <Button variant="outline" size="sm" className="cyber-button-secondary">
-                          <Trash2 className="h-4 w-4 mr-2" />
-                          Delete
-                        </Button>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             )}
 
-            {/* Recent Entries Preview */}
             {!showTranscript && (
-              <div className="fade-in">
+              <div className="mb-12">
                 <div className="flex items-center space-x-3 mb-6">
                   <BookOpen className="h-6 w-6 cyber-text-accent" />
                   <h3 className="tech-font text-2xl font-semibold cyber-text-primary">

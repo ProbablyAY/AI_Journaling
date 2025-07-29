@@ -8,8 +8,6 @@ import ContactPage from './ContactPage';
 import AuthPage from './AuthPage';
 
 const LandingPage = ({ onLogin }) => {
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(true);
   const [currentPage, setCurrentPage] = useState('home');
   const [formData, setFormData] = useState({
     fullName: '',

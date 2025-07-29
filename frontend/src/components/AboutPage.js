@@ -19,7 +19,12 @@ import {
   FileText,
   Lock,
   Star,
-  CheckCircle
+  CheckCircle,
+  Instagram,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Github
 } from 'lucide-react';
 
 const AboutPage = ({ onNavigate, onAuth }) => {

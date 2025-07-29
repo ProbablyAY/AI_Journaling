@@ -58,11 +58,6 @@ const UpgradePage = ({ user, onLogout }) => {
   };
 
   const handleLogout = () => {
-    setShowLogoutDialog(true);
-  };
-
-  const confirmLogout = () => {
-    setShowLogoutDialog(false);
     onLogout();
   };
 

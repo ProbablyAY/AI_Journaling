@@ -25,8 +25,18 @@ const ContactPage = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
+
+  const socialIcons = [
+    { icon: Instagram, href: "#", color: "from-pink-500 to-purple-500" },
+    { icon: Facebook, href: "#", color: "from-blue-600 to-blue-800" },
+    { icon: Twitter, href: "#", color: "from-cyan-400 to-blue-500" },
+    { icon: Linkedin, href: "#", color: "from-blue-500 to-blue-700" },
+    { icon: Github, href: "#", color: "from-gray-600 to-gray-800" },
+    { icon: Mail, href: "mailto:support@sparkco.com", color: "from-red-500 to-orange-500" }
+  ];
 
   const handleInputChange = (e) => {
     setFormData({

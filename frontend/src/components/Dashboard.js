@@ -434,6 +434,12 @@ const Dashboard = ({ user, onLogout }) => {
       gradient: "from-yellow-400 to-orange-500"
     },
     { 
+      icon: Settings, 
+      label: "Settings", 
+      onClick: () => {},
+      gradient: "from-gray-400 to-slate-500"
+    },
+    { 
       icon: Headphones, 
       label: "Contact Us", 
       onClick: () => {},

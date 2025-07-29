@@ -846,7 +846,7 @@ const Dashboard = ({ user, onLogout }) => {
                   onClick={handleLogout}
                 >
                   <LogOut className="h-4 w-4 mr-2" />
-                  {showLogoutConfirm ? 'Are you sure? Click to confirm' : 'Sign Out'}
+                  Sign Out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

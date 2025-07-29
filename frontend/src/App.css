@@ -554,21 +554,3 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
-/* Extended sidebar background */
-.sidebar-gradient {
-  background: linear-gradient(180deg, rgba(15, 15, 35, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
-  backdrop-filter: blur(20px);
-  position: relative;
-}
-
-.sidebar-gradient::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 25, 0.8) 0%, rgba(20, 20, 35, 0.9) 100%);
-  z-index: -1;
-}

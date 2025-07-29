@@ -21,7 +21,19 @@ import {
   Rocket,
   Database,
   BarChart3,
-  Lock
+  Lock,
+  Users,
+  Bell,
+  Edit,
+  Calendar,
+  Heart,
+  FileText,
+  Headphones,
+  Gift,
+  GraduationCap,
+  HelpCircle,
+  Code,
+  ChevronDown
 } from 'lucide-react';
 import { pricingPlans } from '../mock';
 

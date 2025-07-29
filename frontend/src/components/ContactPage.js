@@ -13,7 +13,12 @@ import {
   Send,
   MessageSquare,
   Phone,
-  MapPin
+  MapPin,
+  Instagram,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Github
 } from 'lucide-react';
 
 const ContactPage = ({ onNavigate }) => {

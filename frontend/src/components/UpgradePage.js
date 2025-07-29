@@ -107,7 +107,7 @@ const UpgradePage = ({ user, onLogout }) => {
     },
     { 
       icon: Heart, 
-      label: "Write a letter to your future self!", 
+      label: "Write to Future Self", 
       onClick: () => navigate('/'),
       gradient: "from-pink-400 to-rose-500"
     },

@@ -58,10 +58,7 @@ const EntriesPage = ({ user, onLogout }) => {
     onLogout();
   };
 
-  const confirmLogout = () => {
-    setShowLogoutDialog(false);
-    onLogout();
-  };
+
 
   // Updated navigation structure to match Dashboard
   const topSectionItems = [

@@ -58,12 +58,12 @@ const UpgradePage = ({ user, onLogout }) => {
   };
 
   const handleLogout = () => {
-    if (showLogoutConfirm) {
-      onLogout();
-    } else {
-      setShowLogoutConfirm(true);
-      setTimeout(() => setShowLogoutConfirm(false), 5000);
-    }
+    setShowLogoutDialog(true);
+  };
+
+  const confirmLogout = () => {
+    setShowLogoutDialog(false);
+    onLogout();
   };
 
   // Updated navigation structure to match Dashboard

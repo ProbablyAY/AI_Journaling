@@ -97,7 +97,122 @@
 #====================================================================================================
 
 
+user_problem_statement: "Fix UI regression where post-login pages revert to old design and implement various dashboard enhancements including dropdown arrow, light mode toggle, AI companion improvements, dashboard content refinements, and UI fixes."
 
-#====================================================================================================
-# Testing Data - Main Agent and testing sub agent both should log testing data below this section
-#====================================================================================================
+frontend:
+  - task: "Add dropdown arrow next to profile name"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/components/Dashboard.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Starting implementation of dropdown arrow icon next to user profile name"
+
+  - task: "Implement light mode toggle functionality"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/components/Dashboard.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Need to implement theme toggle between light and dark mode"
+
+  - task: "Give AI companion female name and dynamic typing messages"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/components/Dashboard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "AI companion needs female name and dynamic typing intro messages with backspace animations"
+
+  - task: "Refine dashboard home content"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/components/Dashboard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Remove 'tap to record', add sections for write entry, explore previous entries with scrollable rectangles, this moment one year ago"
+
+  - task: "Move write letter to future self button to side panel"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/components/Dashboard.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Move button from main area to side panel under 'Read previous memories'"
+
+  - task: "Enhance sign-out confirmation"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/components/Dashboard.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Add 'Are you sure?' confirmation and make 'Sign Out' red in dropdown"
+
+  - task: "Extend darker background behind left sidebar"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/App.css"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Extend darker area behind sidebar buttons all the way to bottom"
+
+backend:
+  - task: "No backend changes required"
+    implemented: true
+    working: true
+    file: "N/A"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "All requested changes are frontend-only"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "AI companion female name and dynamic typing messages"
+    - "Refine dashboard home content"
+    - "Add dropdown arrow next to profile name"
+    - "Implement light mode toggle functionality"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Starting implementation of UI improvements and dashboard enhancements. Confirmed existing pages are already styled correctly with cyberpunk theme."

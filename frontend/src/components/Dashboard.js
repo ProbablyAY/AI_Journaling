@@ -191,6 +191,10 @@ const Dashboard = ({ user, onLogout }) => {
     }
   };
 
+  const handleLogout = () => {
+    onLogout();
+  };
+
   const handlePageNavigation = (page) => {
     setCurrentPage(page);
     setIsSidebarOpen(false); // Close mobile sidebar when navigating

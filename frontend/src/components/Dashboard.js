@@ -848,6 +848,7 @@ const Dashboard = ({ user, onLogout }) => {
                     </AvatarFallback>
                   </Avatar>
                   <span className="hidden md:inline modern-font text-sm">{user?.name}</span>
+                  <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="cyber-container border-0 w-56">

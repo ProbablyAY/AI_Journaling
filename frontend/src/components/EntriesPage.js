@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent } from './ui/card';
 import { Input } from './ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Badge } from './ui/badge';
@@ -19,7 +19,11 @@ import {
   X,
   Eye,
   Edit,
-  Trash2
+  Trash2,
+  Sparkles,
+  Zap,
+  TrendingUp,
+  Archive
 } from 'lucide-react';
 import { mockEntries } from '../mock';
 
@@ -32,16 +36,25 @@ const EntriesPage = ({ user, onLogout }) => {
   const [filteredEntries, setFilteredEntries] = useState(mockEntries);
 
   const navigationItems = [
-    { icon: Home, label: "Today's Entry", active: false, onClick: () => navigate('/') },
-    { icon: BookOpen, label: "My Entries", active: true, onClick: () => {} },
-    { icon: Download, label: "Export", active: false, onClick: () => {} },
-    { icon: Crown, label: "Upgrade", active: false, onClick: () => navigate('/upgrade') },
-    { icon: Settings, label: "Settings", active: false, onClick: () => {} },
-    { icon: LogOut, label: "Logout", active: false, onClick: onLogout }
+    { icon: Home, label: "Today's Entry", active: false, onClick: () => navigate('/'), gradient: "from-cyan-400 to-blue-500" },
+    { icon: BookOpen, label: "My Entries", active: true, onClick: () => {}, gradient: "from-purple-400 to-pink-500" },
+    { icon: Download, label: "Export", active: false, onClick: () => {}, gradient: "from-green-400 to-emerald-500" },
+    { icon: Crown, label: "Upgrade", active: false, onClick: () => navigate('/upgrade'), gradient: "from-yellow-400 to-orange-500" },
+    { icon: Settings, label: "Settings", active: false, onClick: () => {}, gradient: "from-gray-400 to-slate-500" },
+    { icon: LogOut, label: "Logout", active: false, onClick: onLogout, gradient: "from-red-400 to-pink-500" }
   ];
 
   const moods = ['all', 'Reflective', 'Grateful', 'Excited', 'Contemplative', 'Peaceful', 'Energetic'];
   const months = ['all', 'January 2025', 'December 2024', 'November 2024'];
+
+  const moodColors = {
+    'Reflective': 'from-blue-500/20 to-cyan-500/20 border-blue-500/30 text-blue-300',
+    'Grateful': 'from-green-500/20 to-emerald-500/20 border-green-500/30 text-green-300',
+    'Excited': 'from-orange-500/20 to-yellow-500/20 border-orange-500/30 text-orange-300',
+    'Contemplative': 'from-purple-500/20 to-indigo-500/20 border-purple-500/30 text-purple-300',
+    'Peaceful': 'from-teal-500/20 to-cyan-500/20 border-teal-500/30 text-teal-300',
+    'Energetic': 'from-pink-500/20 to-red-500/20 border-pink-500/30 text-pink-300'
+  };
 
   React.useEffect(() => {
     let filtered = mockEntries;
@@ -70,232 +83,271 @@ const EntriesPage = ({ user, onLogout }) => {
         />
       )}
 
-      {/* Sidebar */}
-      <div className={`fixed md:relative z-50 md:z-10 h-full w-80 bg-white journal-shadow transform transition-transform duration-300 ease-in-out ${
+      {/* Enhanced Sidebar */}
+      <div className={`fixed md:relative z-50 md:z-10 h-full w-80 sidebar-gradient transform transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       }`}>
-        <div className="notebook-texture h-full">
-          <Card className="paper-texture h-full rounded-none border-0">
-            <CardHeader className="pb-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="handwritten text-3xl font-bold ink-text">EchoDiary</h2>
-                  <p className="sans-serif text-sm ink-text opacity-70">Welcome back, {user?.name}</p>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="md:hidden"
-                  onClick={() => setIsSidebarOpen(false)}
-                >
-                  <X className="h-5 w-5" />
-                </Button>
+        <div className="h-full border-r border-purple-500/20">
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="tech-font text-3xl font-bold gradient-text">EchoDiary</h2>
+                <p className="modern-font text-sm cyber-text-secondary">Welcome back, {user?.name}</p>
               </div>
-            </CardHeader>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="md:hidden cyber-text-secondary hover:cyber-text-primary"
+                onClick={() => setIsSidebarOpen(false)}
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
             
-            <CardContent className="px-6">
-              <nav className="space-y-2">
-                {navigationItems.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={item.onClick}
-                    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors sans-serif ${
-                      item.active 
-                        ? 'bg-slate-100 ink-text font-medium' 
-                        : 'ink-text opacity-70 nav-hover'
-                    }`}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    <span>{item.label}</span>
-                  </button>
-                ))}
-              </nav>
-            </CardContent>
-          </Card>
+            <nav className="space-y-2">
+              {navigationItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={item.onClick}
+                  className={`w-full flex items-center space-x-4 px-4 py-4 rounded-xl transition-all duration-300 modern-font group ${
+                    item.active 
+                      ? 'nav-active' 
+                      : 'cyber-text-secondary nav-hover'
+                  }`}
+                >
+                  <div className={`p-2 rounded-lg bg-gradient-to-r ${item.gradient} ${item.active ? 'shadow-lg' : 'group-hover:shadow-md'} transition-all duration-300`}>
+                    <item.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <span className={item.active ? 'font-semibold' : ''}>{item.label}</span>
+                </button>
+              ))}
+            </nav>
+
+            {/* Quick Stats */}
+            <div className="mt-8 p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20">
+              <div className="flex items-center space-x-3 mb-3">
+                <TrendingUp className="h-5 w-5 cyber-text-neon" />
+                <span className="modern-font font-semibold cyber-text-primary">Your Archive</span>
+              </div>
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <div className="text-center">
+                  <div className="cyber-text-neon font-bold text-lg">{filteredEntries.length}</div>
+                  <div className="cyber-text-secondary">Entries</div>
+                </div>
+                <div className="text-center">
+                  <div className="cyber-text-accent font-bold text-lg">85%</div>
+                  <div className="cyber-text-secondary">Completion</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="flex-1 overflow-hidden">
         {/* Mobile Header */}
-        <div className="md:hidden bg-white journal-shadow px-4 py-3 flex items-center justify-between">
+        <div className="md:hidden cyber-container mx-4 mt-4 px-4 py-3 flex items-center justify-between">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setIsSidebarOpen(true)}
+            className="cyber-text-secondary"
           >
             <Menu className="h-5 w-5" />
           </Button>
-          <h1 className="handwritten text-2xl font-bold ink-text">My Entries</h1>
+          <h1 className="tech-font text-xl font-bold cyber-text-primary">My Entries</h1>
           <div className="w-8"></div>
         </div>
 
         {/* Entries Content */}
         <div className="h-full p-6 overflow-y-auto">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* Header - Desktop */}
             <div className="hidden md:block mb-8">
-              <h1 className="serif text-4xl font-semibold ink-text mb-2">
-                My Entries
-              </h1>
-              <p className="sans-serif text-lg ink-text opacity-70">
-                Browse and search through your journal entries
+              <div className="flex items-center space-x-4 mb-4">
+                <Archive className="h-8 w-8 cyber-text-neon" />
+                <h1 className="tech-font text-4xl font-bold cyber-text-primary">
+                  My Entries
+                </h1>
+              </div>
+              <p className="modern-font text-lg cyber-text-secondary">
+                Browse, search, and manage your journal entries
               </p>
             </div>
 
-            {/* Filters and Search */}
-            <div className="mb-8 space-y-4">
-              <div className="flex flex-col md:flex-row gap-4">
-                {/* Search */}
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 ink-text opacity-50" />
-                  <Input
-                    placeholder="Search entries..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 paper-texture"
-                  />
+            {/* Enhanced Filters and Search */}
+            <div className="mb-8 space-y-6">
+              <div className="cyber-card p-6">
+                <div className="flex flex-col lg:flex-row gap-4">
+                  {/* Search */}
+                  <div className="relative flex-1">
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 cyber-text-secondary" />
+                    <Input
+                      placeholder="Search entries, tags, or moods..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="cyber-input pl-12 modern-font"
+                    />
+                  </div>
+
+                  {/* Mood Filter */}
+                  <Select value={selectedMood} onValueChange={setSelectedMood}>
+                    <SelectTrigger className="w-full lg:w-48 cyber-input modern-font">
+                      <Filter className="h-4 w-4 mr-2" />
+                      <SelectValue placeholder="Filter by mood" />
+                    </SelectTrigger>
+                    <SelectContent className="cyber-container border-0">
+                      {moods.map((mood) => (
+                        <SelectItem key={mood} value={mood} className="cyber-text-secondary hover:cyber-text-primary">
+                          {mood === 'all' ? 'All Moods' : mood}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+
+                  {/* Date Filter */}
+                  <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+                    <SelectTrigger className="w-full lg:w-48 cyber-input modern-font">
+                      <Calendar className="h-4 w-4 mr-2" />
+                      <SelectValue placeholder="Filter by date" />
+                    </SelectTrigger>
+                    <SelectContent className="cyber-container border-0">
+                      {months.map((month) => (
+                        <SelectItem key={month} value={month} className="cyber-text-secondary hover:cyber-text-primary">
+                          {month === 'all' ? 'All Time' : month}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
-                {/* Mood Filter */}
-                <Select value={selectedMood} onValueChange={setSelectedMood}>
-                  <SelectTrigger className="w-full md:w-48 paper-texture">
-                    <Filter className="h-4 w-4 mr-2" />
-                    <SelectValue placeholder="Filter by mood" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {moods.map((mood) => (
-                      <SelectItem key={mood} value={mood}>
-                        {mood === 'all' ? 'All Moods' : mood}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                {/* Date Filter */}
-                <Select value={selectedMonth} onValueChange={setSelectedMonth}>
-                  <SelectTrigger className="w-full md:w-48 paper-texture">
-                    <Calendar className="h-4 w-4 mr-2" />
-                    <SelectValue placeholder="Filter by date" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {months.map((month) => (
-                      <SelectItem key={month} value={month}>
-                        {month === 'all' ? 'All Time' : month}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                {/* Results Count */}
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="modern-font text-sm cyber-text-secondary">
+                    Showing <span className="cyber-text-neon font-semibold">{filteredEntries.length}</span> entries
+                  </p>
+                  <div className="flex items-center space-x-2">
+                    <Sparkles className="h-4 w-4 cyber-text-accent" />
+                    <span className="modern-font text-xs cyber-text-secondary">Auto-saved</span>
+                  </div>
+                </div>
               </div>
-
-              {/* Results Count */}
-              <p className="sans-serif text-sm ink-text opacity-70">
-                Showing {filteredEntries.length} entries
-              </p>
             </div>
 
-            {/* Entries List */}
-            <div className="space-y-4">
+            {/* Enhanced Entries List */}
+            <div className="space-y-6">
               {filteredEntries.map((entry) => (
-                <Card key={entry.id} className="paper-texture journal-shadow fade-in">
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-4 mb-2">
-                          <p className="sans-serif text-sm ink-text opacity-70">
-                            {new Date(entry.date).toLocaleDateString('en-US', {
-                              weekday: 'long',
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}
-                          </p>
-                          <Badge variant="secondary" className="text-xs">
-                            {entry.mood}
-                          </Badge>
-                          <span className="sans-serif text-xs ink-text opacity-50">
+                <div key={entry.id} className="cyber-card p-6 fade-in">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-4 mb-3">
+                        <p className="modern-font text-sm cyber-text-secondary">
+                          {new Date(entry.date).toLocaleDateString('en-US', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                          })}
+                        </p>
+                        <Badge className={`bg-gradient-to-r ${moodColors[entry.mood] || 'from-gray-500/20 to-gray-500/20 border-gray-500/30 text-gray-300'} border`}>
+                          {entry.mood}
+                        </Badge>
+                        <div className="flex items-center space-x-2">
+                          <Zap className="h-3 w-3 cyber-text-accent" />
+                          <span className="modern-font text-xs cyber-text-secondary">
                             {entry.duration}
                           </span>
                         </div>
-                        
-                        <p className="sans-serif ink-text leading-relaxed mb-4">
-                          {entry.preview}
-                        </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {entry.tags.map((tag, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
-                              #{tag}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex justify-between items-center pt-4 border-t border-slate-200">
-                      <div className="flex space-x-2">
-                        <Button variant="ghost" size="sm" className="nav-hover">
-                          <Eye className="h-4 w-4 mr-2" />
-                          <span className="mobile-hidden">Read as conversation</span>
-                          <span className="md:hidden">Read</span>
-                        </Button>
-                        <Button variant="ghost" size="sm" className="nav-hover">
-                          <Edit className="h-4 w-4 mr-2" />
-                          <span className="mobile-hidden">Edit</span>
-                        </Button>
                       </div>
                       
-                      <div className="flex space-x-2">
-                        <Button variant="ghost" size="sm" className="nav-hover">
-                          <Download className="h-4 w-4" />
-                        </Button>
-                        <Button variant="ghost" size="sm" className="nav-hover text-red-600 hover:text-red-700">
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
+                      <p className="modern-font cyber-text-secondary leading-relaxed mb-4 text-lg">
+                        {entry.preview}
+                      </p>
+
+                      {/* Enhanced Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {entry.tags.map((tag, index) => (
+                          <Badge key={index} variant="outline" className="bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border-purple-500/30 cyber-text-accent text-xs">
+                            #{tag}
+                          </Badge>
+                        ))}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                    
+                    {/* Visual indicator */}
+                    <div className="flex flex-col items-center space-y-2 ml-4">
+                      <div className="w-3 h-3 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full animate-pulse"></div>
+                      <div className="w-1 h-8 bg-gradient-to-b from-purple-500/50 to-transparent rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Enhanced Action Buttons */}
+                  <div className="flex justify-between items-center pt-4 border-t border-purple-500/20">
+                    <div className="flex space-x-3">
+                      <Button variant="ghost" size="sm" className="cyber-button-secondary">
+                        <Eye className="h-4 w-4 mr-2" />
+                        <span className="mobile-hidden">Read</span>
+                      </Button>
+                      <Button variant="ghost" size="sm" className="cyber-button-secondary">
+                        <Edit className="h-4 w-4 mr-2" />
+                        <span className="mobile-hidden">Edit</span>
+                      </Button>
+                    </div>
+                    
+                    <div className="flex space-x-3">
+                      <Button variant="ghost" size="sm" className="cyber-text-secondary hover:cyber-text-neon">
+                        <Download className="h-4 w-4" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="cyber-text-secondary hover:text-red-400">
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               ))}
 
               {filteredEntries.length === 0 && (
-                <Card className="paper-texture journal-shadow">
-                  <CardContent className="p-12 text-center">
-                    <BookOpen className="h-12 w-12 mx-auto ink-text opacity-30 mb-4" />
-                    <h3 className="serif text-xl ink-text mb-2">No entries found</h3>
-                    <p className="sans-serif ink-text opacity-70 mb-6">
-                      Try adjusting your search terms or filters
-                    </p>
-                    <Button 
-                      onClick={() => navigate('/')}
-                      className="btn-primary sans-serif"
-                    >
-                      Start Your First Entry
-                    </Button>
-                  </CardContent>
-                </Card>
+                <div className="cyber-card p-12 text-center">
+                  <BookOpen className="h-16 w-16 mx-auto cyber-text-secondary opacity-50 mb-6" />
+                  <h3 className="tech-font text-2xl cyber-text-primary mb-4">No entries found</h3>
+                  <p className="modern-font cyber-text-secondary mb-8">
+                    Try adjusting your search terms or filters, or create your first entry
+                  </p>
+                  <Button 
+                    onClick={() => navigate('/')}
+                    className="cyber-button-primary modern-font"
+                  >
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    Start Your First Entry
+                  </Button>
+                </div>
               )}
             </div>
 
-            {/* Bulk Actions */}
+            {/* Enhanced Bulk Actions */}
             {filteredEntries.length > 0 && (
-              <div className="mt-8 pt-6 border-t border-slate-200">
+              <div className="mt-8 cyber-card p-6">
                 <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
-                  <div className="flex space-x-2">
-                    <Button variant="outline" className="btn-secondary sans-serif">
+                  <div className="flex space-x-3">
+                    <Button variant="outline" className="cyber-button-secondary modern-font">
                       <Download className="h-4 w-4 mr-2" />
                       Export All
                     </Button>
-                    <Button variant="outline" className="btn-secondary sans-serif">
-                      Merge Selected
+                    <Button variant="outline" className="cyber-button-secondary modern-font">
+                      <Archive className="h-4 w-4 mr-2" />
+                      Archive Selected
                     </Button>
                   </div>
                   
-                  <p className="sans-serif text-sm ink-text opacity-70">
-                    {filteredEntries.length} total entries • {user?.plan} plan
-                  </p>
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full animate-pulse"></div>
+                      <span className="modern-font text-sm cyber-text-secondary">
+                        {filteredEntries.length} entries • {user?.plan} plan
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

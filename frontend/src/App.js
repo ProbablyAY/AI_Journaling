@@ -7,13 +7,8 @@ import EntriesPage from "./components/EntriesPage";
 import UpgradePage from "./components/UpgradePage";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Temporarily set to true to test
-  const [currentUser, setCurrentUser] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    plan: "Standard",
-    joinedDate: "Dec 2024"
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleLogin = (userData) => {
     setIsLoggedIn(true);

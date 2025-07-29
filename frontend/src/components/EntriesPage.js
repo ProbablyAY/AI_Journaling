@@ -44,7 +44,7 @@ import {
 } from 'lucide-react';
 import { mockEntries } from '../mock';
 
-const EntriesPage = ({ user, onLogout }) => {
+const EntriesPage = ({ user, onLogout, isLightMode, toggleTheme }) => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMood, setSelectedMood] = useState('all');

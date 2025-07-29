@@ -82,6 +82,47 @@ const Dashboard = ({ user, onLogout }) => {
     return () => clearInterval(interval);
   }, []);
 
+  // AI Companion typing animation effect
+  useEffect(() => {
+    const typeMessage = () => {
+      const message = aiCompanionMessages[currentMessageIndex];
+      setIsTyping(true);
+      setAiMessage('');
+      
+      let currentChar = 0;
+      const typingInterval = setInterval(() => {
+        if (currentChar < message.length) {
+          setAiMessage(prev => prev + message[currentChar]);
+          currentChar++;
+        } else {
+          clearInterval(typingInterval);
+          setIsTyping(false);
+          
+          // After showing the message for 4 seconds, start backspacing
+          setTimeout(() => {
+            setIsTyping(true);
+            let backspaceChar = message.length;
+            const backspaceInterval = setInterval(() => {
+              if (backspaceChar > 0) {
+                setAiMessage(message.substring(0, backspaceChar - 1));
+                backspaceChar--;
+              } else {
+                clearInterval(backspaceInterval);
+                setIsTyping(false);
+                // Move to next message after a brief pause
+                setTimeout(() => {
+                  setCurrentMessageIndex((prev) => (prev + 1) % aiCompanionMessages.length);
+                }, 1000);
+              }
+            }, 50);
+          }, 4000);
+        }
+      }, 100);
+    };
+
+    typeMessage();
+  }, [currentMessageIndex]);
+
   const handleRecord = () => {
     if (!isRecording) {
       setIsRecording(true);

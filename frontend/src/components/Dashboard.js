@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { 
   Home, 
   BookOpen, 
@@ -19,7 +21,20 @@ import {
   X,
   Sparkles,
   Zap,
-  MessageCircle
+  MessageCircle,
+  Users,
+  Bell,
+  Calendar,
+  FileText,
+  Headphones,
+  Gift,
+  GraduationCap,
+  Code,
+  UserPlus,
+  Sun,
+  Moon,
+  CreditCard,
+  HelpCircle
 } from 'lucide-react';
 import { mockPrompts, mockTranscript } from '../mock';
 
@@ -30,6 +45,8 @@ const Dashboard = ({ user, onLogout }) => {
   const [transcriptText, setTranscriptText] = useState('');
   const [showTranscript, setShowTranscript] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -68,14 +85,179 @@ const Dashboard = ({ user, onLogout }) => {
     setShowTranscript(false);
   };
 
-  const navigationItems = [
-    { icon: Home, label: "Today's Entry", active: true, onClick: () => {}, gradient: "from-cyan-400 to-blue-500" },
-    { icon: BookOpen, label: "My Entries", active: false, onClick: () => navigate('/entries'), gradient: "from-purple-400 to-pink-500" },
-    { icon: Download, label: "Export", active: false, onClick: () => {}, gradient: "from-green-400 to-emerald-500" },
-    { icon: Crown, label: "Upgrade", active: false, onClick: () => navigate('/upgrade'), gradient: "from-yellow-400 to-orange-500" },
-    { icon: Settings, label: "Settings", active: false, onClick: () => {}, gradient: "from-gray-400 to-slate-500" },
-    { icon: LogOut, label: "Logout", active: false, onClick: onLogout, gradient: "from-red-400 to-pink-500" }
+  const handleLogout = () => {
+    if (showLogoutConfirm) {
+      onLogout();
+    } else {
+      setShowLogoutConfirm(true);
+      setTimeout(() => setShowLogoutConfirm(false), 3000);
+    }
+  };
+
+  const topSectionItems = [
+    { 
+      icon: Home, 
+      label: "Home", 
+      active: currentPage === 'home',
+      onClick: () => setCurrentPage('home'),
+      gradient: "from-cyan-400 to-blue-500"
+    },
+    { 
+      icon: Users, 
+      label: "EchoDiary for Family", 
+      active: currentPage === 'family',
+      onClick: () => setCurrentPage('family'),
+      gradient: "from-purple-400 to-pink-500",
+      badge: "WIP"
+    },
+    { 
+      icon: Bell, 
+      label: "Updates", 
+      active: currentPage === 'updates',
+      onClick: () => setCurrentPage('updates'),
+      gradient: "from-orange-400 to-red-500",
+      badge: "2"
+    }
   ];
+
+  const journalingItems = [
+    { 
+      icon: Edit, 
+      label: "Write an Entry", 
+      onClick: () => {},
+      gradient: "from-green-400 to-emerald-500"
+    },
+    { 
+      icon: Calendar, 
+      label: "Read Previous Memories", 
+      onClick: () => navigate('/entries'),
+      gradient: "from-blue-400 to-indigo-500"
+    },
+    { 
+      icon: FileText, 
+      label: "Export Entries", 
+      onClick: () => {},
+      gradient: "from-teal-400 to-cyan-500"
+    }
+  ];
+
+  const supportItems = [
+    { 
+      icon: Crown, 
+      label: "Manage Subscription", 
+      onClick: () => navigate('/upgrade'),
+      gradient: "from-yellow-400 to-orange-500"
+    },
+    { 
+      icon: Headphones, 
+      label: "Contact Us", 
+      onClick: () => {},
+      gradient: "from-pink-400 to-rose-500"
+    },
+    { 
+      icon: Gift, 
+      label: "Rewards", 
+      onClick: () => {},
+      gradient: "from-violet-400 to-purple-500"
+    },
+    { 
+      icon: GraduationCap, 
+      label: "Tutorials", 
+      onClick: () => {},
+      gradient: "from-indigo-400 to-blue-500"
+    },
+    { 
+      icon: HelpCircle, 
+      label: "Documentation", 
+      onClick: () => {},
+      gradient: "from-gray-400 to-slate-500"
+    },
+    { 
+      icon: Code, 
+      label: "EchoDiary API", 
+      onClick: () => {},
+      gradient: "from-slate-400 to-gray-600"
+    }
+  ];
+
+  if (currentPage === 'family') {
+    return (
+      <div className="min-h-screen relative z-10 flex">
+        {/* Sidebar would be here */}
+        <div className="flex-1 p-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="cyber-card p-12">
+              <Users className="h-16 w-16 mx-auto mb-6 cyber-text-accent" />
+              <h1 className="tech-font text-4xl font-bold gradient-text mb-6">
+                EchoDiary for Family
+              </h1>
+              <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8">
+                <p className="modern-font text-yellow-300 font-semibold">
+                  🚧 Work in Progress - Coming Soon!
+                </p>
+              </div>
+              <p className="modern-font text-lg cyber-text-secondary mb-8 leading-relaxed">
+                Group your family accounts into a cost-effective plan. Family members can read each other's entries for shared memories and support, but can only edit their own personal entries. Perfect for staying connected while maintaining individual privacy.
+              </p>
+              <Button variant="outline" className="cyber-button-secondary" onClick={() => setCurrentPage('home')}>
+                Back to Home
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (currentPage === 'updates') {
+    return (
+      <div className="min-h-screen relative z-10 flex">
+        {/* Sidebar would be here */}
+        <div className="flex-1 p-8">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="tech-font text-4xl font-bold cyber-text-primary mb-8">
+              Updates & Announcements
+            </h1>
+            <div className="space-y-6">
+              <div className="cyber-card p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse"></div>
+                  <div>
+                    <h3 className="tech-font text-xl font-semibold cyber-text-primary mb-2">
+                      New Export Features Available
+                    </h3>
+                    <p className="modern-font cyber-text-secondary mb-2">
+                      You can now export your entries as PDF with custom formatting options.
+                    </p>
+                    <span className="text-xs cyber-text-secondary opacity-70">2 days ago</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="cyber-card p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-3 h-3 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
+                  <div>
+                    <h3 className="tech-font text-xl font-semibold cyber-text-primary mb-2">
+                      Improved AI Conversation Quality
+                    </h3>
+                    <p className="modern-font cyber-text-secondary mb-2">
+                      Our AI now better understands context and emotions in your conversations.
+                    </p>
+                    <span className="text-xs cyber-text-secondary opacity-70">5 days ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <Button variant="outline" className="cyber-button-secondary mt-8" onClick={() => setCurrentPage('home')}>
+              Back to Home
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen relative z-10 flex">
@@ -87,16 +269,16 @@ const Dashboard = ({ user, onLogout }) => {
         />
       )}
 
-      {/* Enhanced Sidebar */}
-      <div className={`fixed md:relative z-50 md:z-10 h-full w-80 sidebar-gradient transform transition-transform duration-300 ease-in-out ${
+      {/* Enhanced Full-Height Sidebar */}
+      <div className={`fixed md:relative z-50 md:z-10 h-screen w-80 sidebar-gradient transform transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       }`}>
-        <div className="h-full border-r border-purple-500/20">
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-8">
+        <div className="h-full border-r border-purple-500/20 flex flex-col">
+          {/* Header */}
+          <div className="p-6 border-b border-purple-500/20">
+            <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="tech-font text-3xl font-bold gradient-text">EchoDiary</h2>
-                <p className="modern-font text-sm cyber-text-secondary">Welcome back, {user?.name}</p>
+                <h2 className="tech-font text-2xl font-bold gradient-text">EchoDiary</h2>
               </div>
               <Button
                 variant="ghost"
@@ -108,67 +290,183 @@ const Dashboard = ({ user, onLogout }) => {
               </Button>
             </div>
             
-            <nav className="space-y-2">
-              {navigationItems.map((item, index) => (
+            {/* User Greeting */}
+            <div className="space-y-2">
+              <h3 className="modern-font text-lg font-semibold cyber-text-primary">
+                Hey, {user?.name?.split(' ')[0] || 'there'}! 👋
+              </h3>
+              <div className="space-y-1">
+                <Button variant="ghost" className="w-full justify-start p-2 h-auto cyber-text-secondary hover:cyber-text-primary text-sm">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  Explore previous entries
+                </Button>
+                <Button variant="ghost" className="w-full justify-start p-2 h-auto cyber-text-secondary hover:cyber-text-primary text-sm">
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  This date one year ago
+                </Button>
+                <Button className="cyber-button-primary w-full text-sm py-2 mt-2">
+                  <Edit className="h-4 w-4 mr-2" />
+                  Write another entry today
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Top Section */}
+          <div className="px-6 py-4 border-b border-purple-500/20">
+            <div className="space-y-1">
+              {topSectionItems.map((item, index) => (
                 <button
                   key={index}
                   onClick={item.onClick}
-                  className={`w-full flex items-center space-x-4 px-4 py-4 rounded-xl transition-all duration-300 modern-font group ${
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group ${
                     item.active 
-                      ? 'nav-active' 
+                      ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/10 border-l-2 border-cyan-400 cyber-text-neon' 
                       : 'cyber-text-secondary nav-hover'
                   }`}
                 >
-                  <div className={`p-2 rounded-lg bg-gradient-to-r ${item.gradient} ${item.active ? 'shadow-lg' : 'group-hover:shadow-md'} transition-all duration-300`}>
-                    <item.icon className="h-5 w-5 text-white" />
+                  <div className="flex items-center space-x-3">
+                    <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                      <item.icon className="h-4 w-4 text-white" />
+                    </div>
+                    <span className={item.active ? 'font-semibold' : ''}>{item.label}</span>
                   </div>
-                  <span className={item.active ? 'font-semibold' : ''}>{item.label}</span>
+                  {item.badge && (
+                    <Badge variant="secondary" className="text-xs bg-red-500/20 text-red-300 border-red-500/30">
+                      {item.badge}
+                    </Badge>
+                  )}
                 </button>
               ))}
-            </nav>
+            </div>
+          </div>
 
-            {/* User Stats Card */}
-            <div className="mt-8 p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20">
-              <div className="flex items-center space-x-3 mb-3">
-                <Sparkles className="h-5 w-5 cyber-text-neon" />
-                <span className="modern-font font-semibold cyber-text-primary">Your Progress</span>
-              </div>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="cyber-text-secondary">This week</span>
-                  <span className="cyber-text-primary font-semibold">5 entries</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="cyber-text-secondary">Streak</span>
-                  <span className="cyber-text-neon font-semibold">12 days</span>
-                </div>
-              </div>
+          {/* Middle Section - Journaling */}
+          <div className="px-6 py-4 border-b border-purple-500/20">
+            <h4 className="tech-font text-sm font-semibold cyber-text-accent mb-3 uppercase tracking-wider">
+              Journaling
+            </h4>
+            <div className="space-y-1">
+              {journalingItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={item.onClick}
+                  className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group cyber-text-secondary nav-hover"
+                >
+                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                    <item.icon className="h-4 w-4 text-white" />
+                  </div>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Section - Support & Subscription */}
+          <div className="px-6 py-4 flex-1">
+            <h4 className="tech-font text-sm font-semibold cyber-text-accent mb-3 uppercase tracking-wider">
+              Subscription & Support
+            </h4>
+            <div className="space-y-1">
+              {supportItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={item.onClick}
+                  className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group cyber-text-secondary nav-hover"
+                >
+                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                    <item.icon className="h-4 w-4 text-white" />
+                  </div>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Referral Section */}
+          <div className="px-6 py-4 border-t border-purple-500/20">
+            <div className="cyber-card p-4 text-center">
+              <UserPlus className="h-6 w-6 mx-auto mb-2 cyber-text-neon" />
+              <h4 className="tech-font text-sm font-semibold cyber-text-primary mb-1">
+                Refer a Friend
+              </h4>
+              <p className="modern-font text-xs cyber-text-secondary mb-3">
+                Earn up to 6 months free!
+              </p>
+              <Button size="sm" className="cyber-button-primary text-xs">
+                Invite Now!
+              </Button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-hidden">
-        {/* Mobile Header */}
-        <div className="md:hidden cyber-container mx-4 mt-4 px-4 py-3 flex items-center justify-between">
+      <div className="flex-1 overflow-hidden flex flex-col">
+        {/* Top Bar */}
+        <div className="bg-gradient-to-r from-slate-900/50 to-purple-900/30 border-b border-purple-500/20 px-6 py-3 flex items-center justify-between">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setIsSidebarOpen(true)}
-            className="cyber-text-secondary"
+            className="md:hidden cyber-text-secondary"
           >
             <Menu className="h-5 w-5" />
           </Button>
-          <h1 className="tech-font text-xl font-bold cyber-text-primary">Today's Entry</h1>
-          <div className="w-8"></div>
+          
+          <div className="hidden md:block">
+            <h1 className="tech-font text-xl font-bold cyber-text-primary">Welcome back, {user?.name}!</h1>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <Button size="sm" className="cyber-button-primary" onClick={() => navigate('/upgrade')}>
+              <Crown className="h-4 w-4 mr-2" />
+              Upgrade
+            </Button>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center space-x-2 cyber-text-secondary hover:cyber-text-primary">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src="/placeholder-avatar.jpg" />
+                    <AvatarFallback className="bg-gradient-to-r from-cyan-400 to-purple-500 text-white">
+                      {user?.name?.charAt(0) || 'U'}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="hidden md:inline modern-font text-sm">{user?.name}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="cyber-container border-0 w-56">
+                <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
+                  <Sun className="h-4 w-4 mr-2" />
+                  Theme: Dark
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary" onClick={() => navigate('/upgrade')}>
+                  <CreditCard className="h-4 w-4 mr-2" />
+                  Manage Subscription
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
+                  <Gift className="h-4 w-4 mr-2" />
+                  Earn Free Credits
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="bg-purple-500/20" />
+                <DropdownMenuItem 
+                  className="cyber-text-secondary hover:text-red-400"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  {showLogoutConfirm ? 'Confirm Sign Out?' : 'Sign Out'}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
 
         {/* Main Journaling Area */}
-        <div className="h-full p-6 overflow-y-auto">
+        <div className="flex-1 p-6 overflow-y-auto">
           <div className="max-w-4xl mx-auto">
-            {/* Header - Desktop */}
-            <div className="hidden md:block mb-12 text-center">
+            {/* Header */}
+            <div className="text-center mb-12">
               <h1 className="tech-font text-5xl font-bold cyber-text-primary mb-4">
                 Let's talk about your day
               </h1>
@@ -178,16 +476,6 @@ const Dashboard = ({ user, onLogout }) => {
                   {currentPrompt}
                 </p>
               </div>
-            </div>
-
-            {/* Mobile Header */}
-            <div className="md:hidden mb-8 text-center">
-              <h2 className="tech-font text-3xl font-bold cyber-text-primary mb-3">
-                Let's talk about your day
-              </h2>
-              <p className="modern-font cyber-text-secondary">
-                {currentPrompt}
-              </p>
             </div>
 
             {/* Recording Interface */}

@@ -981,21 +981,49 @@
 /* Light Mode Feature Comparison Table Fixes */
 .light-mode .feature-comparison-table,
 .light-mode .feature-comparison,
-.light-mode table {
+.light-mode table,
+.light-mode .comparison-grid {
   background: var(--card-bg) !important;
+  background-image: none !important;
 }
 
-/* Remove notebook lines from feature comparison grid */
+/* Completely remove notebook lines from feature comparison grid and all child elements */
+.light-mode .feature-comparison-table *,
+.light-mode .feature-comparison *,
+.light-mode table *,
+.light-mode .comparison-grid * {
+  background-image: none !important;
+}
+
+/* Remove notebook lines from any container that might have them */
 .light-mode .feature-comparison-table::before,
 .light-mode .feature-comparison::before,
-.light-mode table::before {
+.light-mode table::before,
+.light-mode .comparison-grid::before {
   display: none !important;
 }
 
 .light-mode .feature-comparison-table .cyber-card::before,
 .light-mode .feature-comparison .cyber-card::before,
-.light-mode table .cyber-card::before {
+.light-mode table .cyber-card::before,
+.light-mode .comparison-grid .cyber-card::before {
   display: none !important;
+}
+
+/* Override any cyber-card background in tables */
+.light-mode .feature-comparison-table .cyber-card,
+.light-mode .feature-comparison .cyber-card,
+.light-mode table .cyber-card,
+.light-mode .comparison-grid .cyber-card {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+.light-mode .feature-comparison-table .cyber-card *,
+.light-mode .feature-comparison .cyber-card *,
+.light-mode table .cyber-card *,
+.light-mode .comparison-grid .cyber-card * {
+  background-image: none !important;
 }
 
 /* Make X marks much darker and more visible */
@@ -1038,19 +1066,18 @@
 .light-mode table td {
   color: #2c3e50 !important;
   background: transparent !important;
-}
-
-/* Remove paper texture from table cells */
-.light-mode .feature-comparison-table td,
-.light-mode .feature-comparison td,
-.light-mode table td {
   background-image: none !important;
 }
 
+/* Remove paper texture from table cells completely */
+.light-mode .feature-comparison-table td,
+.light-mode .feature-comparison td,
+.light-mode table td,
 .light-mode .feature-comparison-table tr,
 .light-mode .feature-comparison tr,
 .light-mode table tr {
   background-image: none !important;
+  background: transparent !important;
 }
 
 /* Remove the notebook-mode class styles since light-mode now handles it */

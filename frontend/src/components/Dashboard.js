@@ -315,14 +315,14 @@ const Dashboard = ({ user, onLogout }) => {
       icon: Home, 
       label: "Home", 
       active: currentPage === 'home',
-      onClick: () => setCurrentPage('home'),
+      onClick: () => handlePageNavigation('home'),
       gradient: "from-cyan-400 to-blue-500"
     },
     { 
       icon: Users, 
       label: "EchoDiary for Family", 
       active: currentPage === 'family',
-      onClick: () => setCurrentPage('family'),
+      onClick: () => handlePageNavigation('family'),
       gradient: "from-purple-400 to-pink-500",
       badge: "WIP"
     },
@@ -330,7 +330,7 @@ const Dashboard = ({ user, onLogout }) => {
       icon: Bell, 
       label: "Updates", 
       active: currentPage === 'updates',
-      onClick: () => setCurrentPage('updates'),
+      onClick: () => handlePageNavigation('updates'),
       gradient: "from-orange-400 to-red-500",
       badge: "2"
     }

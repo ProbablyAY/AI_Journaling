@@ -345,9 +345,12 @@ const Dashboard = ({ user, onLogout }) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="cyber-container border-0 w-56">
-              <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
-                <Sun className="h-4 w-4 mr-2" />
-                Theme: Dark
+              <DropdownMenuItem 
+                className="cyber-text-secondary hover:cyber-text-primary"
+                onClick={() => setIsDarkMode(!isDarkMode)}
+              >
+                {isDarkMode ? <Sun className="h-4 w-4 mr-2" /> : <Moon className="h-4 w-4 mr-2" />}
+                Theme: {isDarkMode ? 'Dark' : 'Light'}
               </DropdownMenuItem>
               <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary" onClick={() => navigate('/upgrade')}>
                 <CreditCard className="h-4 w-4 mr-2" />
@@ -359,11 +362,11 @@ const Dashboard = ({ user, onLogout }) => {
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-purple-500/20" />
               <DropdownMenuItem 
-                className="cyber-text-secondary hover:text-red-400"
+                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
                 onClick={handleLogout}
               >
                 <LogOut className="h-4 w-4 mr-2" />
-                {showLogoutConfirm ? 'Confirm Sign Out?' : 'Sign Out'}
+                {showLogoutConfirm ? 'Are you sure? Click to confirm' : 'Sign Out'}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

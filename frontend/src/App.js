@@ -10,6 +10,7 @@ import SignOutConfirmation from "./components/SignOutConfirmation";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [showSignOutConfirmation, setShowSignOutConfirmation] = useState(false);
 
   const handleLogin = (userData) => {
     setIsLoggedIn(true);
@@ -17,8 +18,17 @@ function App() {
   };
 
   const handleLogout = () => {
+    setShowSignOutConfirmation(true);
+  };
+
+  const confirmLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
+    setShowSignOutConfirmation(false);
+  };
+
+  const cancelLogout = () => {
+    setShowSignOutConfirmation(false);
   };
 
   return (

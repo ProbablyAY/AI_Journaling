@@ -37,9 +37,13 @@ import {
   CreditCard,
   HelpCircle,
   ArrowLeft,
-  AlertCircle
+  AlertCircle,
+  ChevronDown,
+  ChevronRight,
+  Heart,
+  Clock
 } from 'lucide-react';
-import { mockPrompts, mockTranscript } from '../mock';
+import { mockPrompts, mockTranscript, mockEntries } from '../mock';
 
 const Dashboard = ({ user, onLogout }) => {
   const navigate = useNavigate();

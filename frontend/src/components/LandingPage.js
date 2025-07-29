@@ -104,7 +104,7 @@ const LandingPage = ({ onLogin }) => {
               <Mail className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Contact</span>
             </Button>
-            <Button className="cyber-button-primary modern-font" onClick={() => setShowAuthModal(true)}>
+            <Button className="cyber-button-primary modern-font" onClick={() => setCurrentPage('auth')}>
               <Mic className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Start Journaling</span>
               <span className="md:hidden">Start</span>

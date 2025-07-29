@@ -192,20 +192,6 @@ const Dashboard = ({ user, onLogout }) => {
               <h3 className="modern-font text-lg font-semibold cyber-text-primary">
                 Hey, {user?.name?.split(' ')[0] || 'there'}! 👋
               </h3>
-              <div className="space-y-1">
-                <Button variant="ghost" className="w-full justify-start p-2 h-auto cyber-text-secondary hover:cyber-text-primary text-sm">
-                  <Calendar className="h-4 w-4 mr-2" />
-                  Explore previous entries
-                </Button>
-                <Button variant="ghost" className="w-full justify-start p-2 h-auto cyber-text-secondary hover:cyber-text-primary text-sm">
-                  <Sparkles className="h-4 w-4 mr-2" />
-                  This date one year ago
-                </Button>
-                <Button className="cyber-button-primary w-full text-sm py-2 mt-2" onClick={() => handlePageNavigation('home')}>
-                  <Edit className="h-4 w-4 mr-2" />
-                  Write another entry today
-                </Button>
-              </div>
             </div>
           </div>
 

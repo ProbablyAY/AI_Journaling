@@ -44,9 +44,17 @@ const LandingPage = ({ onLogin }) => {
     });
   };
 
-  const handleStartJourney = () => {
-    onLogin(mockUser);
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
   };
+
+  if (currentPage === 'about') {
+    return <AboutPage onNavigate={handleNavigate} />;
+  }
+
+  if (currentPage === 'contact') {
+    return <ContactPage onNavigate={handleNavigate} />;
+  }
 
   const extendedStats = [
     { icon: Users, value: mockStats.activeUsers, label: "Daily Users", color: "cyan" },

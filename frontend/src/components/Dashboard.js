@@ -397,27 +397,56 @@ const Dashboard = ({ user, onLogout }) => {
   ];
 
   if (currentPage === 'family') {
+    const { sidebar, topBar } = renderSpecialPage();
     return (
       <div className="min-h-screen relative z-10 flex">
-        {/* Sidebar would be here */}
-        <div className="flex-1 p-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="cyber-card p-12">
-              <Users className="h-16 w-16 mx-auto mb-6 cyber-text-accent" />
-              <h1 className="tech-font text-4xl font-bold gradient-text mb-6">
-                EchoDiary for Family
-              </h1>
-              <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8">
-                <p className="modern-font text-yellow-300 font-semibold">
-                  🚧 Work in Progress - Coming Soon!
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+        {sidebar}
+        <div className="flex-1 overflow-hidden flex flex-col">
+          {topBar}
+          <div className="flex-1 p-8 overflow-y-auto">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="cyber-card p-12">
+                <Users className="h-16 w-16 mx-auto mb-6 cyber-text-accent" />
+                <h1 className="tech-font text-4xl font-bold gradient-text mb-6">
+                  EchoDiary for Family
+                </h1>
+                <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8">
+                  <p className="modern-font text-yellow-300 font-semibold flex items-center justify-center">
+                    <AlertCircle className="h-5 w-5 mr-2" />
+                    🚧 Work in Progress - Coming Soon!
+                  </p>
+                </div>
+                <p className="modern-font text-lg cyber-text-secondary mb-8 leading-relaxed">
+                  Group your family accounts into a cost-effective plan. Family members can read each other's entries for shared memories and support, but can only edit their own personal entries. Perfect for staying connected while maintaining individual privacy.
                 </p>
+                <div className="space-y-4">
+                  <h3 className="tech-font text-xl font-semibold cyber-text-primary">Planned Features:</h3>
+                  <div className="grid md:grid-cols-2 gap-4 text-left">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
+                      <span className="modern-font cyber-text-secondary">Shared family dashboard</span>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2"></div>
+                      <span className="modern-font cyber-text-secondary">Privacy controls per entry</span>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-pink-400 rounded-full mt-2"></div>
+                      <span className="modern-font cyber-text-secondary">Family milestone tracking</span>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2"></div>
+                      <span className="modern-font cyber-text-secondary">Bulk discount pricing</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="modern-font text-lg cyber-text-secondary mb-8 leading-relaxed">
-                Group your family accounts into a cost-effective plan. Family members can read each other's entries for shared memories and support, but can only edit their own personal entries. Perfect for staying connected while maintaining individual privacy.
-              </p>
-              <Button variant="outline" className="cyber-button-secondary" onClick={() => setCurrentPage('home')}>
-                Back to Home
-              </Button>
             </div>
           </div>
         </div>
@@ -426,49 +455,145 @@ const Dashboard = ({ user, onLogout }) => {
   }
 
   if (currentPage === 'updates') {
+    const { sidebar, topBar } = renderSpecialPage();
     return (
       <div className="min-h-screen relative z-10 flex">
-        {/* Sidebar would be here */}
-        <div className="flex-1 p-8">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="tech-font text-4xl font-bold cyber-text-primary mb-8">
-              Updates & Announcements
-            </h1>
-            <div className="space-y-6">
-              <div className="cyber-card p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-3 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse"></div>
-                  <div>
-                    <h3 className="tech-font text-xl font-semibold cyber-text-primary mb-2">
-                      New Export Features Available
-                    </h3>
-                    <p className="modern-font cyber-text-secondary mb-2">
-                      You can now export your entries as PDF with custom formatting options.
-                    </p>
-                    <span className="text-xs cyber-text-secondary opacity-70">2 days ago</span>
-                  </div>
-                </div>
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+        {sidebar}
+        <div className="flex-1 overflow-hidden flex flex-col">
+          {topBar}
+          <div className="flex-1 p-8 overflow-y-auto">
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-8">
+                <h1 className="tech-font text-4xl font-bold cyber-text-primary mb-4 flex items-center">
+                  <Bell className="h-10 w-10 mr-4 cyber-text-neon" />
+                  Updates & Announcements
+                </h1>
+                <p className="modern-font cyber-text-secondary text-lg">
+                  Stay up to date with the latest EchoDiary features and improvements
+                </p>
               </div>
               
-              <div className="cyber-card p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-3 h-3 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
-                  <div>
-                    <h3 className="tech-font text-xl font-semibold cyber-text-primary mb-2">
-                      Improved AI Conversation Quality
-                    </h3>
-                    <p className="modern-font cyber-text-secondary mb-2">
-                      Our AI now better understands context and emotions in your conversations.
-                    </p>
-                    <span className="text-xs cyber-text-secondary opacity-70">5 days ago</span>
+              <div className="space-y-6">
+                <div className="cyber-card p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse"></div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="tech-font text-xl font-semibold cyber-text-primary">
+                          New Export Features Available
+                        </h3>
+                        <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30">New</Badge>
+                      </div>
+                      <p className="modern-font cyber-text-secondary mb-3 leading-relaxed">
+                        You can now export your entries as PDF with custom formatting options. Choose from multiple templates and styling options to make your journal exports truly yours.
+                      </p>
+                      <span className="text-xs cyber-text-secondary opacity-70">2 days ago • Product Update</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="cyber-card p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="tech-font text-xl font-semibold cyber-text-primary">
+                          Improved AI Conversation Quality
+                        </h3>
+                        <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">Enhancement</Badge>
+                      </div>
+                      <p className="modern-font cyber-text-secondary mb-3 leading-relaxed">
+                        Our AI now better understands context and emotions in your conversations. Experience more natural dialogues with improved follow-up questions and emotional intelligence.
+                      </p>
+                      <span className="text-xs cyber-text-secondary opacity-70">5 days ago • AI Update</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="cyber-card p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-green-400 rounded-full mt-2 animate-pulse"></div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="tech-font text-xl font-semibold cyber-text-primary">
+                          Mobile App Performance Boost
+                        </h3>
+                        <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Performance</Badge>
+                      </div>
+                      <p className="modern-font cyber-text-secondary mb-3 leading-relaxed">
+                        We've optimized the mobile experience for faster loading times and smoother voice recording. Enjoy a 40% improvement in app responsiveness.
+                      </p>
+                      <span className="text-xs cyber-text-secondary opacity-70">1 week ago • Technical Update</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <Button variant="outline" className="cyber-button-secondary mt-8" onClick={() => setCurrentPage('home')}>
-              Back to Home
-            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (currentPage === 'referral') {
+    const { sidebar, topBar } = renderSpecialPage();
+    return (
+      <div className="min-h-screen relative z-10 flex">
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+        {sidebar}
+        <div className="flex-1 overflow-hidden flex flex-col">
+          {topBar}
+          <div className="flex-1 p-8 overflow-y-auto">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="cyber-card p-12">
+                <UserPlus className="h-16 w-16 mx-auto mb-6 cyber-text-neon" />
+                <h1 className="tech-font text-4xl font-bold gradient-text mb-6">
+                  Refer Friends & Earn Rewards
+                </h1>
+                <p className="modern-font text-lg cyber-text-secondary mb-8 leading-relaxed">
+                  Share the power of AI journaling with friends and family. For every person who joins using your referral link, you both get rewarded!
+                </p>
+                
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  <div className="cyber-card p-6">
+                    <Gift className="h-12 w-12 mx-auto mb-4 text-yellow-400" />
+                    <h3 className="tech-font text-xl font-semibold cyber-text-primary mb-2">1 Month Free</h3>
+                    <p className="modern-font text-sm cyber-text-secondary">For each successful referral</p>
+                  </div>
+                  <div className="cyber-card p-6">
+                    <Crown className="h-12 w-12 mx-auto mb-4 text-purple-400" />
+                    <h3 className="tech-font text-xl font-semibold cyber-text-primary mb-2">Up to 6 Months</h3>
+                    <p className="modern-font text-sm cyber-text-secondary">Maximum free subscription time</p>
+                  </div>
+                  <div className="cyber-card p-6">
+                    <Sparkles className="h-12 w-12 mx-auto mb-4 cyber-text-accent" />
+                    <h3 className="tech-font text-xl font-semibold cyber-text-primary mb-2">Bonus Features</h3>
+                    <p className="modern-font text-sm cyber-text-secondary">Unlock premium features early</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <Button className="cyber-button-primary text-lg px-8 py-4">
+                    <Share className="h-5 w-5 mr-2" />
+                    <span className="text-white">Get Your Referral Link</span>
+                  </Button>
+                  <p className="modern-font text-sm cyber-text-secondary">
+                    Share via social media, email, or direct link
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

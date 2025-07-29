@@ -135,6 +135,10 @@ const ContactPage = ({ onNavigate }) => {
                   involved in any way? We're passionate about ensuring all of our customers have a 
                   seamless experience in documenting their life to the fullest.
                 </p>
+                <p className="modern-font text-lg cyber-text-secondary leading-relaxed mt-4">
+                  We love hearing from our users! Feel free to contact us with questions, suggestions for improvements, 
+                  or any feedback about your journaling experience. Your insights help us make SparkCo better for everyone.
+                </p>
               </div>
 
               {/* Contact Info Cards */}

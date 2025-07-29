@@ -22,7 +22,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 
-const AboutPage = ({ onNavigate }) => {
+const AboutPage = ({ onNavigate, onAuth }) => {
   const features = [
     {
       icon: Mic,

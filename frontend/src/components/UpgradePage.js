@@ -33,7 +33,11 @@ import {
   GraduationCap,
   HelpCircle,
   Code,
-  ChevronDown
+  ChevronDown,
+  UserPlus,
+  Sun,
+  Moon,
+  CreditCard
 } from 'lucide-react';
 import { pricingPlans } from '../mock';
 

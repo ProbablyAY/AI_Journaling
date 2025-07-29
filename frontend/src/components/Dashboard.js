@@ -45,6 +45,20 @@ import {
 } from 'lucide-react';
 import { mockPrompts, mockTranscript, mockEntries } from '../mock';
 
+// AI Companion messages
+const aiCompanionMessages = [
+  "Hi, I'm Luna! I'd love to talk to you about your day!",
+  "Hey there! Did you do something fun today? I'm all ears!",
+  "Hello! Did you learn something new? I'm excited to hear about it!",
+  "Hi! Something sad on your mind? I'm here to listen.",
+  "Welcome back! What's been on your heart today?",
+  "Hey! I'm Luna, your journaling companion. Ready to share?",
+  "Hi there! Any interesting thoughts you'd like to explore?",
+  "Hello! I'm here whenever you need someone to talk to.",
+  "Hi! Luna here - what's been the highlight of your day?",
+  "Hey! Ready for a heart-to-heart conversation?"
+];
+
 const Dashboard = ({ user, onLogout }) => {
   const navigate = useNavigate();
   const [isRecording, setIsRecording] = useState(false);

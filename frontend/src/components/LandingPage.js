@@ -48,6 +48,10 @@ const LandingPage = ({ onLogin }) => {
     setCurrentPage(page);
   };
 
+  const handleStartJourney = () => {
+    onLogin(mockUser);
+  };
+
   if (currentPage === 'about') {
     return <AboutPage onNavigate={handleNavigate} />;
   }

@@ -416,19 +416,6 @@ const EntriesPage = ({ user, onLogout }) => {
         {/* Entries Content */}
         <div className="h-full p-6 overflow-y-auto">
           <div className="max-w-6xl mx-auto">
-            {/* Header - Desktop */}
-            <div className="hidden md:block mb-8">
-              <div className="flex items-center space-x-4 mb-4">
-                <Archive className="h-8 w-8 cyber-text-neon" />
-                <h1 className="tech-font text-4xl font-bold cyber-text-primary">
-                  My Entries
-                </h1>
-              </div>
-              <p className="modern-font text-lg cyber-text-secondary">
-                Browse, search, and manage your journal entries
-              </p>
-            </div>
-
             {/* Enhanced Filters and Search */}
             <div className="mb-8 space-y-6">
               <div className="cyber-card p-6">

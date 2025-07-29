@@ -44,7 +44,7 @@ import {
 } from 'lucide-react';
 import { pricingPlans } from '../mock';
 
-const UpgradePage = ({ user, onLogout }) => {
+const UpgradePage = ({ user, onLogout, isLightMode, toggleTheme }) => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('Standard');

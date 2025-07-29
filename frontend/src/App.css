@@ -816,6 +816,106 @@
   color: #e74c3c !important;
 }
 
+/* Light Mode Pricing Cards Styling */
+.light-mode .pricing-card,
+.light-mode .cyber-card {
+  background: var(--card-bg) !important;
+  border: 2px solid rgba(52, 73, 94, 0.2) !important;
+  color: #2c3e50 !important;
+}
+
+/* Best Value Plan - Gold Outline */
+.light-mode .pricing-card[data-plan="Standard"],
+.light-mode .cyber-card:has([data-plan="Standard"]) {
+  border: 3px solid #f59e0b !important; /* Gold border */
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3) !important; /* Gold glow */
+  position: relative;
+}
+
+.light-mode .pricing-card[data-plan="Standard"]::before,
+.light-mode .cyber-card:has([data-plan="Standard"])::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b, #fbbf24);
+  border-radius: inherit;
+  z-index: -1;
+  background-size: 400% 400%;
+  animation: goldShimmer 3s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Pricing card text styling for light mode */
+.light-mode .pricing-card h3,
+.light-mode .pricing-card .tech-font {
+  color: #2c3e50 !important;
+}
+
+.light-mode .pricing-card .gradient-text {
+  background: linear-gradient(135deg, #e74c3c 0%, #8b4513 50%, #2c3e50 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.light-mode .pricing-card ul li {
+  color: #2c3e50 !important;
+}
+
+/* Enhanced Best Value badge for light mode */
+.light-mode .bg-gradient-to-r.from-green-500.to-emerald-500 {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%) !important; /* Gold gradient */
+  color: #1f2937 !important; /* Dark text on gold */
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+}
+
+/* Most Popular badge enhancement for light mode */
+.light-mode .popular-badge {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3) !important;
+}
+
+/* Custom Red Scrollbars for Light Mode */
+.light-mode ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.light-mode ::-webkit-scrollbar-track {
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 4px;
+}
+
+.light-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c0392b 0%, #a93226 100%);
+}
+
+.light-mode ::-webkit-scrollbar-corner {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* Firefox scrollbars for light mode */
+.light-mode * {
+  scrollbar-width: thin;
+  scrollbar-color: #e74c3c rgba(231, 76, 60, 0.1);
+}
+
 /* Remove the notebook-mode class styles since light-mode now handles it */
 
 /* Text clamping utilities */

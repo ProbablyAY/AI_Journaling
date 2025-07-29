@@ -424,10 +424,11 @@ const LandingPage = ({ onLogin }) => {
                 <Dialog open={showAuthModal} onOpenChange={setShowAuthModal}>
                   <DialogTrigger asChild>
                     <Button className="cyber-button-primary modern-font w-full text-lg py-6 font-semibold">
-                      <span className="gradient-text">Start Your Journey</span>
+                      <Sparkles className="h-5 w-5 mr-2" />
+                      <span className="text-white">Start Your Journey</span>
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="cyber-container max-w-md border-0">
+                  <DialogContent className="cyber-container max-w-md border-0 max-h-[90vh] overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle className="tech-font text-2xl cyber-text-primary text-center mb-4">
                         {isSignUp ? (
@@ -504,7 +505,9 @@ const LandingPage = ({ onLogin }) => {
                       )}
                       
                       <Button type="submit" className="cyber-button-primary modern-font w-full py-3 font-semibold">
-                        {isSignUp ? 'Create Account' : 'Sign In'}
+                        <span className="text-white">
+                          {isSignUp ? 'Create Account' : 'Sign In'}
+                        </span>
                       </Button>
                       
                       <Separator className="my-6 bg-gray-600" />

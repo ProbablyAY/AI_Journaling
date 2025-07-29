@@ -435,6 +435,7 @@ const UpgradePage = ({ user, onLogout, isLightMode, toggleTheme }) => {
                   <div 
                     key={index} 
                     className={`pricing-card relative ${plan.popular ? 'scale-105 lg:scale-110' : ''}`}
+                    data-plan={plan.name}
                   >
                     {plan.popular && (
                       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center space-y-1">

@@ -150,32 +150,6 @@ const Dashboard = ({ user, onLogout, isLightMode, toggleTheme }) => {
     setShowTranscript(false);
   };
 
-  const getThemeDisplay = () => {
-    switch (themeMode) {
-      case 'light': return 'Light';
-      case 'notebook': return 'Notebook';
-      default: return 'Dark';
-    }
-  };
-
-  const getThemeIcon = () => {
-    switch (themeMode) {
-      case 'light': return Sun;
-      case 'notebook': return BookOpen;
-      default: return Moon;
-    }
-  };
-
-  const toggleTheme = () => {
-    if (themeMode === 'dark') {
-      setThemeMode('light');
-    } else if (themeMode === 'light') {
-      setThemeMode('notebook');
-    } else {
-      setThemeMode('dark');
-    }
-  };
-
   const handleLogout = () => {
     onLogout();
   };

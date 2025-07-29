@@ -446,11 +446,11 @@ const UpgradePage = ({ user, onLogout }) => {
                           <IconComponent className="h-8 w-8 text-white" />
                         </div>
                         
-                        <CardTitle className="tech-font text-2xl cyber-text-primary mb-2">
+                        <CardTitle className="tech-font text-2xl cyber-text-primary mb-4">
                           {plan.name}
                         </CardTitle>
                         
-                        <div className="flex items-baseline justify-center space-x-2">
+                        <div className="flex items-baseline justify-center space-x-2 mb-2">
                           <span className="tech-font text-5xl font-bold gradient-text">
                             {plan.price}
                           </span>

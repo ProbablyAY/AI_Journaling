@@ -817,29 +817,27 @@
 }
 
 /* Light Mode Pricing Cards Styling */
-.light-mode .pricing-card,
-.light-mode .cyber-card {
+.light-mode .pricing-card {
   background: var(--card-bg) !important;
   border: 2px solid rgba(52, 73, 94, 0.2) !important;
   color: #2c3e50 !important;
 }
 
 /* Best Value Plan - Gold Outline */
-.light-mode .pricing-card[data-plan="Standard"],
-.light-mode .cyber-card:has([data-plan="Standard"]) {
+.light-mode .pricing-card[data-plan="Standard"] {
   border: 3px solid #f59e0b !important; /* Gold border */
   box-shadow: 0 0 20px rgba(245, 158, 11, 0.3) !important; /* Gold glow */
   position: relative;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(251, 191, 36, 0.05) 100%) !important;
 }
 
-.light-mode .pricing-card[data-plan="Standard"]::before,
-.light-mode .cyber-card:has([data-plan="Standard"])::before {
+.light-mode .pricing-card[data-plan="Standard"]::after {
   content: '';
   position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   background: linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b, #fbbf24);
   border-radius: inherit;
   z-index: -1;
@@ -852,9 +850,16 @@
   50% { background-position: 100% 50%; }
 }
 
+/* All pricing cards in light mode */
+.light-mode .pricing-card .card-header,
+.light-mode .pricing-card .card-content {
+  background: transparent !important;
+}
+
 /* Pricing card text styling for light mode */
 .light-mode .pricing-card h3,
-.light-mode .pricing-card .tech-font {
+.light-mode .pricing-card .tech-font,
+.light-mode .pricing-card .card-title {
   color: #2c3e50 !important;
 }
 
@@ -865,7 +870,8 @@
   -webkit-text-fill-color: transparent !important;
 }
 
-.light-mode .pricing-card ul li {
+.light-mode .pricing-card ul li,
+.light-mode .pricing-card p {
   color: #2c3e50 !important;
 }
 
@@ -875,6 +881,7 @@
   color: #1f2937 !important; /* Dark text on gold */
   font-weight: 700 !important;
   text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+  border: 1px solid #d97706 !important;
 }
 
 /* Most Popular badge enhancement for light mode */
@@ -883,6 +890,7 @@
   color: white !important;
   font-weight: 600 !important;
   box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3) !important;
+  border: 1px solid #c0392b !important;
 }
 
 /* Custom Red Scrollbars for Light Mode */

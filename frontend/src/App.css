@@ -542,30 +542,8 @@
   }
 }
 
-/* Enhanced Light Mode Support */
+/* Light Mode = Notebook Paper Theme */
 .light-mode {
-  /* Background colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  
-  /* Text colors */
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-accent: #3b82f6;
-  --text-neon: #2563eb;
-  
-  /* Card backgrounds */
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --card-border: rgba(148, 163, 184, 0.2);
-  
-  /* Sidebar background */
-  --sidebar-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%);
-  --sidebar-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%);
-}
-
-/* Notebook Paper Theme */
-.notebook-mode {
   /* Notebook paper colors */
   --bg-primary: #fefdf7;
   --bg-secondary: #fdfcf3;
@@ -588,13 +566,13 @@
   --sidebar-overlay: linear-gradient(180deg, rgba(222, 184, 135, 0.3) 0%, rgba(245, 222, 179, 0.2) 100%);
 }
 
-.notebook-mode {
+.light-mode {
   background: var(--bg-paper);
-  font-family: 'Kalam', cursive; /* Add handwritten font */
+  font-family: 'Kalam', cursive;
 }
 
-.notebook-mode .cyber-bg {
-  background: var(--bg-paper);
+.light-mode .cyber-bg {
+  background: var(--bg-paper) !important;
   background-image: 
     linear-gradient(transparent 24px, var(--paper-lines) 25px, var(--paper-lines) 26px, transparent 27px),
     linear-gradient(90deg, transparent 79px, #e74c3c 80px, #e74c3c 81px, transparent 82px);
@@ -602,20 +580,20 @@
   background-attachment: local;
 }
 
-.notebook-mode .cyber-container {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 2px 4px rgba(52, 73, 94, 0.1);
+.light-mode .cyber-container {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 2px 4px rgba(52, 73, 94, 0.1) !important;
 }
 
-.notebook-mode .cyber-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 2px 4px rgba(52, 73, 94, 0.1);
+.light-mode .cyber-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 2px 4px rgba(52, 73, 94, 0.1) !important;
   position: relative;
 }
 
-.notebook-mode .cyber-card::before {
+.light-mode .cyber-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -629,150 +607,103 @@
   z-index: 0;
 }
 
-.notebook-mode .cyber-card > * {
+.light-mode .cyber-card > * {
   position: relative;
   z-index: 1;
 }
 
-.notebook-mode .cyber-text-primary {
-  color: var(--text-primary);
-  font-family: 'Kalam', cursive;
-  font-weight: 600;
-}
-
-.notebook-mode .cyber-text-secondary {
-  color: var(--text-secondary);
-  font-family: 'Kalam', cursive;
-  font-weight: 400;
-}
-
-.notebook-mode .cyber-text-accent {
-  color: var(--text-accent);
-  font-family: 'Kalam', cursive;
-  font-weight: 600;
-}
-
-.notebook-mode .cyber-text-neon {
-  color: var(--text-neon);
-  font-family: 'Kalam', cursive;
-  font-weight: 700;
-}
-
-.notebook-mode .sidebar-gradient {
-  background: var(--sidebar-bg);
-  backdrop-filter: none;
-  border-right: 3px solid #8b4513;
-}
-
-.notebook-mode .sidebar-gradient::before {
-  background: var(--sidebar-overlay);
-}
-
-.notebook-mode .cyber-button-primary {
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-  border: 1px solid #c0392b;
-  font-family: 'Kalam', cursive;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
-}
-
-.notebook-mode .cyber-button-primary:hover {
-  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
-  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.4);
-}
-
-.notebook-mode .cyber-button-secondary {
-  background: transparent;
-  border: 2px solid var(--text-secondary);
-  color: var(--text-secondary);
-  font-family: 'Kalam', cursive;
-  font-weight: 500;
-}
-
-.notebook-mode .cyber-button-secondary:hover {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  border-color: var(--text-primary);
-}
-
-.notebook-mode .tech-font {
-  font-family: 'Kalam', cursive;
-  font-weight: 700;
-}
-
-.notebook-mode .modern-font {
-  font-family: 'Kalam', cursive;
-  font-weight: 400;
-}
-
-.notebook-mode .gradient-text {
-  background: linear-gradient(135deg, #e74c3c 0%, #8b4513 50%, #2c3e50 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Kalam', cursive;
-  font-weight: 700;
-}
-
-.light-mode .cyber-bg {
-  background: var(--bg-primary);
-}
-
-.light-mode .cyber-container {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-}
-
-.light-mode .cyber-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
 .light-mode .cyber-text-primary {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
+  font-family: 'Kalam', cursive !important;
+  font-weight: 600 !important;
 }
 
 .light-mode .cyber-text-secondary {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
+  font-family: 'Kalam', cursive !important;
+  font-weight: 400 !important;
 }
 
 .light-mode .cyber-text-accent {
-  color: var(--text-accent);
+  color: var(--text-accent) !important;
+  font-family: 'Kalam', cursive !important;
+  font-weight: 600 !important;
 }
 
 .light-mode .cyber-text-neon {
-  color: var(--text-neon);
+  color: var(--text-neon) !important;
+  font-family: 'Kalam', cursive !important;
+  font-weight: 700 !important;
 }
 
 .light-mode .sidebar-gradient {
-  background: var(--sidebar-bg);
-  backdrop-filter: blur(20px);
+  background: var(--sidebar-bg) !important;
+  backdrop-filter: none !important;
+  border-right: 3px solid #8b4513 !important;
 }
 
 .light-mode .sidebar-gradient::before {
-  background: var(--sidebar-overlay);
+  background: var(--sidebar-overlay) !important;
 }
 
 .light-mode .cyber-button-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  border: 1px solid #2563eb;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+  border: 1px solid #c0392b !important;
+  font-family: 'Kalam', cursive !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3) !important;
+  color: white !important;
 }
 
 .light-mode .cyber-button-primary:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%) !important;
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.4) !important;
 }
 
 .light-mode .cyber-button-secondary {
-  background: transparent;
-  border: 1px solid var(--card-border);
-  color: var(--text-secondary);
+  background: transparent !important;
+  border: 2px solid var(--text-secondary) !important;
+  color: var(--text-secondary) !important;
+  font-family: 'Kalam', cursive !important;
+  font-weight: 500 !important;
 }
 
 .light-mode .cyber-button-secondary:hover {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
 }
+
+.light-mode .tech-font {
+  font-family: 'Kalam', cursive !important;
+  font-weight: 700 !important;
+}
+
+.light-mode .modern-font {
+  font-family: 'Kalam', cursive !important;
+  font-weight: 400 !important;
+}
+
+.light-mode .gradient-text {
+  background: linear-gradient(135deg, #e74c3c 0%, #8b4513 50%, #2c3e50 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-family: 'Kalam', cursive !important;
+  font-weight: 700 !important;
+}
+
+/* Fix main background and body */
+.light-mode body {
+  background: var(--bg-paper) !important;
+}
+
+.light-mode .App {
+  background: var(--bg-paper) !important;
+  min-height: 100vh;
+}
+
+/* Remove the notebook-mode class styles since light-mode now handles it */
 
 /* Text clamping utilities */
 .line-clamp-1 {

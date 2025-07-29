@@ -7,6 +7,8 @@ import { Label } from './ui/label';
 import { Separator } from './ui/separator';
 import { Users, FileText, Shield, Play, Zap, Sparkles, Mic, Home, Info, Mail, Star, TrendingUp, Brain, Heart, Quote, Instagram, Facebook, Twitter, Linkedin, Github } from 'lucide-react';
 import { mockStats, mockUser } from '../mock';
+import AboutPage from './AboutPage';
+import ContactPage from './ContactPage';
 
 const LandingPage = ({ onLogin }) => {
   const [showAuthModal, setShowAuthModal] = useState(false);

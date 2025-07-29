@@ -60,9 +60,9 @@ function App() {
           />
         ) : (
           <Routes>
-            <Route path="/" element={<Dashboard user={currentUser} onLogout={handleLogout} />} />
-            <Route path="/entries" element={<EntriesPage user={currentUser} onLogout={handleLogout} />} />
-            <Route path="/upgrade" element={<UpgradePage user={currentUser} onLogout={handleLogout} />} />
+            <Route path="/" element={<Dashboard user={currentUser} onLogout={handleLogout} isLightMode={isLightMode} toggleTheme={toggleTheme} />} />
+            <Route path="/entries" element={<EntriesPage user={currentUser} onLogout={handleLogout} isLightMode={isLightMode} toggleTheme={toggleTheme} />} />
+            <Route path="/upgrade" element={<UpgradePage user={currentUser} onLogout={handleLogout} isLightMode={isLightMode} toggleTheme={toggleTheme} />} />
           </Routes>
         )}
       </BrowserRouter>

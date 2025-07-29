@@ -97,6 +97,219 @@ const Dashboard = ({ user, onLogout }) => {
     }
   };
 
+  const handlePageNavigation = (page) => {
+    setCurrentPage(page);
+    setIsSidebarOpen(false); // Close mobile sidebar when navigating
+  };
+
+  const renderSpecialPage = () => {
+    const commonSidebar = (
+      <div className={`fixed md:relative z-50 md:z-10 h-screen w-80 sidebar-gradient transform transition-transform duration-300 ease-in-out ${
+        isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+      }`}>
+        <div className="h-full border-r border-purple-500/20 flex flex-col">
+          {/* Header */}
+          <div className="p-6 border-b border-purple-500/20">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="tech-font text-2xl font-bold gradient-text">EchoDiary</h2>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="md:hidden cyber-text-secondary hover:cyber-text-primary"
+                onClick={() => setIsSidebarOpen(false)}
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+            
+            {/* User Greeting */}
+            <div className="space-y-2">
+              <h3 className="modern-font text-lg font-semibold cyber-text-primary">
+                Hey, {user?.name?.split(' ')[0] || 'there'}! 👋
+              </h3>
+              <div className="space-y-1">
+                <Button variant="ghost" className="w-full justify-start p-2 h-auto cyber-text-secondary hover:cyber-text-primary text-sm">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  Explore previous entries
+                </Button>
+                <Button variant="ghost" className="w-full justify-start p-2 h-auto cyber-text-secondary hover:cyber-text-primary text-sm">
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  This date one year ago
+                </Button>
+                <Button className="cyber-button-primary w-full text-sm py-2 mt-2" onClick={() => handlePageNavigation('home')}>
+                  <Edit className="h-4 w-4 mr-2" />
+                  Write another entry today
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="px-6 py-4 border-b border-purple-500/20">
+            <div className="space-y-1">
+              {topSectionItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => handlePageNavigation(item.active ? 'home' : item.label.toLowerCase().replace(' ', ''))}
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group ${
+                    (currentPage === 'family' && item.label === 'EchoDiary for Family') ||
+                    (currentPage === 'updates' && item.label === 'Updates') ||
+                    (currentPage === 'home' && item.label === 'Home')
+                      ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/10 border-l-2 border-cyan-400 cyber-text-neon' 
+                      : 'cyber-text-secondary nav-hover'
+                  }`}
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                      <item.icon className="h-4 w-4 text-white" />
+                    </div>
+                    <span className={(currentPage === 'family' && item.label === 'EchoDiary for Family') ||
+                    (currentPage === 'updates' && item.label === 'Updates') ||
+                    (currentPage === 'home' && item.label === 'Home') ? 'font-semibold' : ''}>{item.label}</span>
+                  </div>
+                  {item.badge && (
+                    <Badge variant="secondary" className="text-xs bg-red-500/20 text-red-300 border-red-500/30">
+                      {item.badge}
+                    </Badge>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Rest of sidebar sections */}
+          <div className="px-6 py-4 border-b border-purple-500/20">
+            <h4 className="tech-font text-sm font-semibold cyber-text-accent mb-3 uppercase tracking-wider">
+              Journaling
+            </h4>
+            <div className="space-y-1">
+              {journalingItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={item.onClick}
+                  className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group cyber-text-secondary nav-hover"
+                >
+                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                    <item.icon className="h-4 w-4 text-white" />
+                  </div>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="px-6 py-4 flex-1">
+            <h4 className="tech-font text-sm font-semibold cyber-text-accent mb-3 uppercase tracking-wider">
+              Subscription & Support
+            </h4>
+            <div className="space-y-1">
+              {supportItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={item.onClick}
+                  className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group cyber-text-secondary nav-hover"
+                >
+                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                    <item.icon className="h-4 w-4 text-white" />
+                  </div>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Referral Section */}
+          <div className="px-6 py-4 border-t border-purple-500/20">
+            <div className="cyber-card p-4 text-center">
+              <UserPlus className="h-6 w-6 mx-auto mb-2 cyber-text-neon" />
+              <h4 className="tech-font text-sm font-semibold cyber-text-primary mb-1">
+                Refer a Friend
+              </h4>
+              <p className="modern-font text-xs cyber-text-secondary mb-3">
+                Earn up to 6 months free!
+              </p>
+              <Button size="sm" className="cyber-button-primary text-xs" onClick={() => handlePageNavigation('referral')}>
+                Invite Now!
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
+    const commonTopBar = (
+      <div className="bg-gradient-to-r from-slate-900/50 to-purple-900/30 border-b border-purple-500/20 px-6 py-3 flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsSidebarOpen(true)}
+            className="md:hidden cyber-text-secondary"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => handlePageNavigation('home')}
+            className="cyber-text-secondary hover:cyber-text-primary"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Dashboard
+          </Button>
+        </div>
+
+        <div className="flex items-center space-x-3">
+          <Button size="sm" className="cyber-button-primary" onClick={() => navigate('/upgrade')}>
+            <Crown className="h-4 w-4 mr-2" />
+            Upgrade
+          </Button>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center space-x-2 cyber-text-secondary hover:cyber-text-primary">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src="/placeholder-avatar.jpg" />
+                  <AvatarFallback className="bg-gradient-to-r from-cyan-400 to-purple-500 text-white">
+                    {user?.name?.charAt(0) || 'U'}
+                  </AvatarFallback>
+                </Avatar>
+                <span className="hidden md:inline modern-font text-sm">{user?.name}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="cyber-container border-0 w-56">
+              <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
+                <Sun className="h-4 w-4 mr-2" />
+                Theme: Dark
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary" onClick={() => navigate('/upgrade')}>
+                <CreditCard className="h-4 w-4 mr-2" />
+                Manage Subscription
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
+                <Gift className="h-4 w-4 mr-2" />
+                Earn Free Credits
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-purple-500/20" />
+              <DropdownMenuItem 
+                className="cyber-text-secondary hover:text-red-400"
+                onClick={handleLogout}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                {showLogoutConfirm ? 'Confirm Sign Out?' : 'Sign Out'}
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+    );
+
+    return { sidebar: commonSidebar, topBar: commonTopBar };
+  };
+
   const topSectionItems = [
     { 
       icon: Home, 

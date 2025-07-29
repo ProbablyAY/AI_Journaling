@@ -347,6 +347,13 @@ const UpgradePage = ({ user, onLogout, isLightMode, toggleTheme }) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="cyber-container border-0 w-56">
+                  <DropdownMenuItem 
+                    className="cyber-text-secondary hover:cyber-text-primary"
+                    onClick={toggleTheme}
+                  >
+                    {isLightMode ? <Sun className="h-4 w-4 mr-2" /> : <Moon className="h-4 w-4 mr-2" />}
+                    Theme: {isLightMode ? 'Light' : 'Dark'}
+                  </DropdownMenuItem>
                   <DropdownMenuItem className="cyber-text-secondary hover:cyber-text-primary">
                     <CreditCard className="h-4 w-4 mr-2" />
                     Manage Subscription

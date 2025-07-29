@@ -92,15 +92,39 @@ const LandingPage = ({ onLogin }) => {
 
           {/* Right: Navigation Buttons */}
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" className="cyber-text-secondary hover:cyber-text-primary modern-font">
+            <Button 
+              variant="ghost" 
+              className={`modern-font transition-all duration-300 ${
+                currentPage === 'home' 
+                  ? 'cyber-text-neon border-b-2 border-cyan-400 bg-cyan-400/10' 
+                  : 'cyber-text-secondary hover:cyber-text-primary'
+              }`}
+              onClick={() => setCurrentPage('home')}
+            >
               <Home className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Home</span>
             </Button>
-            <Button variant="ghost" className="cyber-text-secondary hover:cyber-text-primary modern-font" onClick={() => setCurrentPage('about')}>
+            <Button 
+              variant="ghost" 
+              className={`modern-font transition-all duration-300 ${
+                currentPage === 'about' 
+                  ? 'cyber-text-neon border-b-2 border-cyan-400 bg-cyan-400/10' 
+                  : 'cyber-text-secondary hover:cyber-text-primary'
+              }`}
+              onClick={() => setCurrentPage('about')}
+            >
               <Info className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">About</span>
             </Button>
-            <Button variant="ghost" className="cyber-text-secondary hover:cyber-text-primary modern-font" onClick={() => setCurrentPage('contact')}>
+            <Button 
+              variant="ghost" 
+              className={`modern-font transition-all duration-300 ${
+                currentPage === 'contact' 
+                  ? 'cyber-text-neon border-b-2 border-cyan-400 bg-cyan-400/10' 
+                  : 'cyber-text-secondary hover:cyber-text-primary'
+              }`}
+              onClick={() => setCurrentPage('contact')}
+            >
               <Mail className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Contact</span>
             </Button>

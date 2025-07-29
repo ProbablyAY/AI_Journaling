@@ -434,10 +434,13 @@ const UpgradePage = ({ user, onLogout }) => {
                     className={`pricing-card relative ${plan.popular ? 'scale-105 lg:scale-110' : ''}`}
                   >
                     {plan.popular && (
-                      <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center space-y-1">
                         <div className="popular-badge flex items-center space-x-2">
                           <Star className="h-3 w-3" />
                           <span>Most Popular</span>
+                        </div>
+                        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                          Best Value
                         </div>
                       </div>
                     )}

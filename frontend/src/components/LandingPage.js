@@ -41,6 +41,48 @@ const LandingPage = ({ onLogin }) => {
     });
   };
 
+  const extendedStats = [
+    { icon: Users, value: mockStats.activeUsers, label: "Daily Users", color: "cyan" },
+    { icon: FileText, value: mockStats.pagesWritten, label: "Pages Written", color: "purple" },
+    { icon: Shield, value: mockStats.encryptionRate, label: "Encrypted", color: "green" },
+    { icon: Brain, value: "87%", label: "Mental Health Improvement", color: "blue" },
+    { icon: Heart, value: "4.9/5", label: "User Rating", color: "pink" },
+    { icon: TrendingUp, value: "92%", label: "Daily Completion Rate", color: "orange" }
+  ];
+
+  const reviews = [
+    {
+      name: "Sarah Chen",
+      role: "Marketing Director",
+      content: "EchoDiary has completely transformed my journaling routine. The AI conversations feel so natural, and I love how my scattered thoughts become organized entries.",
+      rating: 5,
+      avatar: "SC"
+    },
+    {
+      name: "Michael Rodriguez",
+      role: "Software Engineer",
+      content: "As someone who struggled with traditional journaling, the voice-to-text feature is a game-changer. It's like having a therapy session with an AI friend.",
+      rating: 5,
+      avatar: "MR"
+    },
+    {
+      name: "Dr. Emily Watson",
+      role: "Clinical Psychologist",
+      content: "I recommend EchoDiary to my patients. The conversational approach to journaling helps them process emotions more effectively than traditional methods.",
+      rating: 5,
+      avatar: "EW"
+    }
+  ];
+
+  const socialIcons = [
+    { icon: Instagram, href: "#", color: "from-pink-500 to-purple-500" },
+    { icon: Facebook, href: "#", color: "from-blue-600 to-blue-800" },
+    { icon: Twitter, href: "#", color: "from-cyan-400 to-blue-500" },
+    { icon: Linkedin, href: "#", color: "from-blue-500 to-blue-700" },
+    { icon: Github, href: "#", color: "from-gray-600 to-gray-800" },
+    { icon: Mail, href: "mailto:support@sparkco.com", color: "from-red-500 to-orange-500" }
+  ];
+
   return (
     <div className="min-h-screen relative z-10">
       {/* Hero Section */}

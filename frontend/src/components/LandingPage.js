@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Separator } from './ui/separator';
 import { Users, FileText, Shield, Play, Zap, Sparkles, Mic, Home, Info, Mail, Star, TrendingUp, Brain, Heart, Quote, Instagram, Facebook, Twitter, Linkedin, Github } from 'lucide-react';
 import { mockStats, mockUser } from '../mock';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
+import AuthPage from './AuthPage';
 
 const LandingPage = ({ onLogin }) => {
   const [showAuthModal, setShowAuthModal] = useState(false);

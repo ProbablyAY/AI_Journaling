@@ -978,6 +978,81 @@
   scrollbar-color: #e74c3c rgba(231, 76, 60, 0.1);
 }
 
+/* Light Mode Feature Comparison Table Fixes */
+.light-mode .feature-comparison-table,
+.light-mode .feature-comparison,
+.light-mode table {
+  background: var(--card-bg) !important;
+}
+
+/* Remove notebook lines from feature comparison grid */
+.light-mode .feature-comparison-table::before,
+.light-mode .feature-comparison::before,
+.light-mode table::before {
+  display: none !important;
+}
+
+.light-mode .feature-comparison-table .cyber-card::before,
+.light-mode .feature-comparison .cyber-card::before,
+.light-mode table .cyber-card::before {
+  display: none !important;
+}
+
+/* Make X marks much darker and more visible */
+.light-mode .feature-comparison-table .text-red-400,
+.light-mode .feature-comparison .text-red-400,
+.light-mode table .text-red-400,
+.light-mode .feature-comparison-table .text-red-500,
+.light-mode .feature-comparison .text-red-500,
+.light-mode table .text-red-500 {
+  color: #dc2626 !important; /* Much darker red */
+  font-weight: 700 !important;
+  font-size: 18px !important;
+}
+
+/* Make check marks much greener and more visible */
+.light-mode .feature-comparison-table .text-green-400,
+.light-mode .feature-comparison .text-green-400,
+.light-mode table .text-green-400,
+.light-mode .feature-comparison-table .text-green-500,
+.light-mode .feature-comparison .text-green-500,
+.light-mode table .text-green-500 {
+  color: #16a34a !important; /* Much darker green */
+  font-weight: 700 !important;
+  font-size: 18px !important;
+}
+
+/* Fix any X or check icons specifically */
+.light-mode .feature-comparison-table svg,
+.light-mode .feature-comparison svg,
+.light-mode table svg {
+  filter: none !important;
+}
+
+/* Make table headers and text more readable */
+.light-mode .feature-comparison-table th,
+.light-mode .feature-comparison th,
+.light-mode table th,
+.light-mode .feature-comparison-table td,
+.light-mode .feature-comparison td,
+.light-mode table td {
+  color: #2c3e50 !important;
+  background: transparent !important;
+}
+
+/* Remove paper texture from table cells */
+.light-mode .feature-comparison-table td,
+.light-mode .feature-comparison td,
+.light-mode table td {
+  background-image: none !important;
+}
+
+.light-mode .feature-comparison-table tr,
+.light-mode .feature-comparison tr,
+.light-mode table tr {
+  background-image: none !important;
+}
+
 /* Remove the notebook-mode class styles since light-mode now handles it */
 
 /* Text clamping utilities */

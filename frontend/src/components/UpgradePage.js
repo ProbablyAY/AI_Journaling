@@ -29,21 +29,117 @@ const UpgradePage = ({ user, onLogout }) => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('Standard');
-
-  const navigationItems = [
-    { icon: Home, label: "Today's Entry", active: false, onClick: () => navigate('/'), gradient: "from-cyan-400 to-blue-500" },
-    { icon: BookOpen, label: "My Entries", active: false, onClick: () => navigate('/entries'), gradient: "from-purple-400 to-pink-500" },
-    { icon: Download, label: "Export", active: false, onClick: () => {}, gradient: "from-green-400 to-emerald-500" },
-    { icon: Crown, label: "Upgrade", active: true, onClick: () => {}, gradient: "from-yellow-400 to-orange-500" },
-    { icon: Settings, label: "Settings", active: false, onClick: () => {}, gradient: "from-gray-400 to-slate-500" },
-    { icon: LogOut, label: "Logout", active: false, onClick: onLogout, gradient: "from-red-400 to-pink-500" }
-  ];
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const handlePlanSelect = (planName) => {
     setSelectedPlan(planName);
     // Mock subscription process
     console.log(`Selected plan: ${planName}`);
   };
+
+  const handleLogout = () => {
+    if (showLogoutConfirm) {
+      onLogout();
+    } else {
+      setShowLogoutConfirm(true);
+      setTimeout(() => setShowLogoutConfirm(false), 5000);
+    }
+  };
+
+  // Updated navigation structure to match Dashboard
+  const topSectionItems = [
+    { 
+      icon: Home, 
+      label: "Home", 
+      active: false,
+      onClick: () => navigate('/'),
+      gradient: "from-cyan-400 to-blue-500"
+    },
+    { 
+      icon: Users, 
+      label: "EchoDiary for Family", 
+      active: false,
+      onClick: () => navigate('/'),
+      gradient: "from-purple-400 to-pink-500",
+      badge: "WIP"
+    },
+    { 
+      icon: Bell, 
+      label: "Updates", 
+      active: false,
+      onClick: () => navigate('/'),
+      gradient: "from-orange-400 to-red-500",
+      badge: "2"
+    }
+  ];
+
+  const journalingItems = [
+    { 
+      icon: Edit, 
+      label: "Write an Entry", 
+      onClick: () => navigate('/'),
+      gradient: "from-green-400 to-emerald-500"
+    },
+    { 
+      icon: Calendar, 
+      label: "Read Previous Memories", 
+      onClick: () => navigate('/entries'),
+      gradient: "from-blue-400 to-indigo-500"
+    },
+    { 
+      icon: Heart, 
+      label: "Write a letter to your future self!", 
+      onClick: () => navigate('/'),
+      gradient: "from-pink-400 to-rose-500"
+    },
+    { 
+      icon: FileText, 
+      label: "Export Entries", 
+      onClick: () => {},
+      gradient: "from-teal-400 to-cyan-500"
+    }
+  ];
+
+  const supportItems = [
+    { 
+      icon: Crown, 
+      label: "Manage Subscription", 
+      onClick: () => {},
+      gradient: "from-yellow-400 to-orange-500",
+      active: true
+    },
+    { 
+      icon: Headphones, 
+      label: "Contact Us", 
+      onClick: () => {},
+      gradient: "from-pink-400 to-rose-500"
+    },
+    { 
+      icon: Gift, 
+      label: "Rewards", 
+      onClick: () => {},
+      gradient: "from-violet-400 to-purple-500"
+    },
+    { 
+      icon: GraduationCap, 
+      label: "Tutorials", 
+      onClick: () => {},
+      gradient: "from-indigo-400 to-blue-500"
+    },
+    { 
+      icon: HelpCircle, 
+      label: "Documentation", 
+      onClick: () => {},
+      gradient: "from-gray-400 to-slate-500"
+    },
+    { 
+      icon: Code, 
+      label: "EchoDiary API", 
+      onClick: () => {},
+      gradient: "from-slate-400 to-gray-600"
+    }
+  ];
 
   const planIcons = {
     'Free Plan': Shield,

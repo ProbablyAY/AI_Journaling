@@ -51,6 +51,7 @@ const EntriesPage = ({ user, onLogout }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [filteredEntries, setFilteredEntries] = useState(mockEntries);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   const handleLogout = () => {

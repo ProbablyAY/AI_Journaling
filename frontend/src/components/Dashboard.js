@@ -173,6 +173,7 @@ const Dashboard = ({ user, onLogout }) => {
               <div className="flex justify-center">
                 <button
                   onClick={handleRecord}
+                  data-testid="mic-button"
                   className={`w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300 ${
                     isRecording 
                       ? 'bg-red-500 pulse-animation' 

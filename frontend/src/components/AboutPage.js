@@ -27,7 +27,7 @@ const AboutPage = ({ onNavigate }) => {
     {
       icon: Mic,
       title: "Voice-First Daily Journaling",
-      description: "Transform daily journaling from a chore into an effortless conversation. Simply talk about your day, thoughts, and feelings naturally - no typing or prompts needed.",
+      description: "Transform daily journaling from a chore into an effortless conversation. Our AI companion will vocally guide you through questions about your day, thoughts, and feelings - just like talking to a caring friend who remembers everything.",
       gradient: "from-cyan-400 to-blue-500"
     },
     {

@@ -67,7 +67,6 @@ const Dashboard = ({ user, onLogout }) => {
   const [showTranscript, setShowTranscript] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [aiMessage, setAiMessage] = useState('');

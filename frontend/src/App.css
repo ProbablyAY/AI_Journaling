@@ -564,6 +564,156 @@
   --sidebar-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%);
 }
 
+/* Notebook Paper Theme */
+.notebook-mode {
+  /* Notebook paper colors */
+  --bg-primary: #fefdf7;
+  --bg-secondary: #fdfcf3;
+  --bg-tertiary: #fbf9f0;
+  --bg-paper: #fefdf7;
+  
+  /* Handwritten text colors */
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-accent: #e74c3c;
+  --text-neon: #c0392b;
+  
+  /* Paper textures */
+  --card-bg: #fefdf7;
+  --card-border: rgba(52, 73, 94, 0.1);
+  --paper-lines: rgba(52, 73, 94, 0.08);
+  
+  /* Sidebar - like a notebook cover */
+  --sidebar-bg: linear-gradient(180deg, rgba(139, 69, 19, 0.1) 0%, rgba(160, 82, 45, 0.05) 100%);
+  --sidebar-overlay: linear-gradient(180deg, rgba(222, 184, 135, 0.3) 0%, rgba(245, 222, 179, 0.2) 100%);
+}
+
+.notebook-mode {
+  background: var(--bg-paper);
+  font-family: 'Kalam', cursive; /* Add handwritten font */
+}
+
+.notebook-mode .cyber-bg {
+  background: var(--bg-paper);
+  background-image: 
+    linear-gradient(transparent 24px, var(--paper-lines) 25px, var(--paper-lines) 26px, transparent 27px),
+    linear-gradient(90deg, transparent 79px, #e74c3c 80px, #e74c3c 81px, transparent 82px);
+  background-size: 100% 30px, 100% 100%;
+  background-attachment: local;
+}
+
+.notebook-mode .cyber-container {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 4px rgba(52, 73, 94, 0.1);
+}
+
+.notebook-mode .cyber-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 4px rgba(52, 73, 94, 0.1);
+  position: relative;
+}
+
+.notebook-mode .cyber-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(transparent 24px, var(--paper-lines) 25px, var(--paper-lines) 26px, transparent 27px);
+  background-size: 100% 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.notebook-mode .cyber-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.notebook-mode .cyber-text-primary {
+  color: var(--text-primary);
+  font-family: 'Kalam', cursive;
+  font-weight: 600;
+}
+
+.notebook-mode .cyber-text-secondary {
+  color: var(--text-secondary);
+  font-family: 'Kalam', cursive;
+  font-weight: 400;
+}
+
+.notebook-mode .cyber-text-accent {
+  color: var(--text-accent);
+  font-family: 'Kalam', cursive;
+  font-weight: 600;
+}
+
+.notebook-mode .cyber-text-neon {
+  color: var(--text-neon);
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+}
+
+.notebook-mode .sidebar-gradient {
+  background: var(--sidebar-bg);
+  backdrop-filter: none;
+  border-right: 3px solid #8b4513;
+}
+
+.notebook-mode .sidebar-gradient::before {
+  background: var(--sidebar-overlay);
+}
+
+.notebook-mode .cyber-button-primary {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border: 1px solid #c0392b;
+  font-family: 'Kalam', cursive;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
+}
+
+.notebook-mode .cyber-button-primary:hover {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.4);
+}
+
+.notebook-mode .cyber-button-secondary {
+  background: transparent;
+  border: 2px solid var(--text-secondary);
+  color: var(--text-secondary);
+  font-family: 'Kalam', cursive;
+  font-weight: 500;
+}
+
+.notebook-mode .cyber-button-secondary:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.notebook-mode .tech-font {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+}
+
+.notebook-mode .modern-font {
+  font-family: 'Kalam', cursive;
+  font-weight: 400;
+}
+
+.notebook-mode .gradient-text {
+  background: linear-gradient(135deg, #e74c3c 0%, #8b4513 50%, #2c3e50 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+}
+
 .light-mode .cyber-bg {
   background: var(--bg-primary);
 }

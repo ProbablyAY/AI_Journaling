@@ -292,7 +292,15 @@ const AboutPage = ({ onNavigate, onAuth }) => {
               Support@SparkCo.com
             </div>
             <div className="flex items-center space-x-3">
-              {/* Social icons would go here */}
+              {socialIcons.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className={`w-8 h-8 rounded-lg bg-gradient-to-r ${social.color} flex items-center justify-center hover:scale-110 transition-transform duration-300`}
+                >
+                  <social.icon className="h-4 w-4 text-white" />
+                </a>
+              ))}
             </div>
           </div>
         </div>

@@ -550,8 +550,82 @@ const LandingPage = ({ onLogin }) => {
         </div>
       </div>
 
-      {/* Bottom gradient fade */}
-      <div className="h-32 bg-gradient-to-t from-transparent to-purple-900/10 mt-16"></div>
+      {/* Reviews Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <Quote className="h-6 w-6 cyber-text-neon" />
+            <h2 className="tech-font text-3xl font-bold cyber-text-primary">
+              Loved by Our Community
+            </h2>
+          </div>
+          <p className="modern-font cyber-text-secondary">
+            See what our users are saying about their journaling journey
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          {reviews.map((review, index) => (
+            <div key={index} className="cyber-card p-6 fade-in">
+              <div className="flex items-center space-x-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center">
+                  <span className="tech-font font-bold text-white text-sm">{review.avatar}</span>
+                </div>
+                <div>
+                  <h4 className="modern-font font-semibold cyber-text-primary">{review.name}</h4>
+                  <p className="modern-font text-sm cyber-text-secondary">{review.role}</p>
+                </div>
+              </div>
+              
+              <div className="flex space-x-1 mb-4">
+                {[...Array(review.rating)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              
+              <p className="modern-font cyber-text-secondary leading-relaxed">
+                "{review.content}"
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="border-t border-purple-500/20 bg-gradient-to-r from-slate-900/50 to-purple-900/30 mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* Left: Copyright */}
+            <div className="flex items-center space-x-4">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center">
+                <Sparkles className="h-4 w-4 text-white" />
+              </div>
+              <div className="modern-font text-sm cyber-text-secondary">
+                © 2025 SparkCo. All rights reserved.
+              </div>
+            </div>
+
+            {/* Center: Email */}
+            <div className="modern-font text-sm cyber-text-secondary">
+              <Mail className="h-4 w-4 inline mr-2" />
+              Support@SparkCo.com
+            </div>
+
+            {/* Right: Social Media */}
+            <div className="flex items-center space-x-3">
+              {socialIcons.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className={`w-8 h-8 rounded-lg bg-gradient-to-r ${social.color} flex items-center justify-center hover:scale-110 transition-transform duration-300`}
+                >
+                  <social.icon className="h-4 w-4 text-white" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

@@ -59,7 +59,7 @@ const aiCompanionMessages = [
   "Hey! Ready for a heart-to-heart conversation?"
 ];
 
-const Dashboard = ({ user, onLogout }) => {
+const Dashboard = ({ user, onLogout, isLightMode, toggleTheme }) => {
   const navigate = useNavigate();
   const [isRecording, setIsRecording] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState(mockPrompts[0]);

@@ -34,38 +34,21 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              isLoggedIn ? (
-                <Dashboard user={currentUser} onLogout={handleLogout} />
-              ) : (
-                <LandingPage onLogin={handleLogin} />
-              )
-            } 
+        {!isLoggedIn ? (
+          <LandingPage onLogin={handleLogin} />
+        ) : showSignOutConfirmation ? (
+          <SignOutConfirmation 
+            onConfirm={confirmLogout}
+            onCancel={cancelLogout}
+            user={currentUser}
           />
-          <Route 
-            path="/entries" 
-            element={
-              isLoggedIn ? (
-                <EntriesPage user={currentUser} onLogout={handleLogout} />
-              ) : (
-                <LandingPage onLogin={handleLogin} />
-              )
-            } 
-          />
-          <Route 
-            path="/upgrade" 
-            element={
-              isLoggedIn ? (
-                <UpgradePage user={currentUser} onLogout={handleLogout} />
-              ) : (
-                <LandingPage onLogin={handleLogin} />
-              )
-            } 
-          />
-        </Routes>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Dashboard user={currentUser} onLogout={handleLogout} />} />
+            <Route path="/entries" element={<EntriesPage user={currentUser} onLogout={handleLogout} />} />
+            <Route path="/upgrade" element={<UpgradePage user={currentUser} onLogout={handleLogout} />} />
+          </Routes>
+        )}
       </BrowserRouter>
     </div>
   );

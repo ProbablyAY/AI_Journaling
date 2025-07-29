@@ -199,12 +199,12 @@ const EntriesPage = ({ user, onLogout }) => {
       <div className={`fixed md:relative z-50 md:z-10 h-full w-80 sidebar-gradient transform transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       }`}>
-        <div className="h-full border-r border-purple-500/20">
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-8">
+        <div className="h-full border-r border-purple-500/20 flex flex-col">
+          {/* Header */}
+          <div className="p-6 border-b border-purple-500/20">
+            <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="tech-font text-3xl font-bold gradient-text">EchoDiary</h2>
-                <p className="modern-font text-sm cyber-text-secondary">Welcome back, {user?.name}</p>
+                <h2 className="tech-font text-2xl font-bold gradient-text">EchoDiary</h2>
               </div>
               <Button
                 variant="ghost"
@@ -216,27 +216,92 @@ const EntriesPage = ({ user, onLogout }) => {
               </Button>
             </div>
             
-            <nav className="space-y-2">
-              {navigationItems.map((item, index) => (
+            {/* User Greeting */}
+            <div className="space-y-2">
+              <h3 className="modern-font text-lg font-semibold cyber-text-primary">
+                Hey, {user?.name?.split(' ')[0] || 'there'}! 👋
+              </h3>
+            </div>
+          </div>
+
+          {/* Top Section */}
+          <div className="px-6 py-4 border-b border-purple-500/20">
+            <div className="space-y-1">
+              {topSectionItems.map((item, index) => (
                 <button
                   key={index}
                   onClick={item.onClick}
-                  className={`w-full flex items-center space-x-4 px-4 py-4 rounded-xl transition-all duration-300 modern-font group ${
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group ${
                     item.active 
-                      ? 'nav-active' 
+                      ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/10 border-l-2 border-cyan-400 cyber-text-neon' 
                       : 'cyber-text-secondary nav-hover'
                   }`}
                 >
-                  <div className={`p-2 rounded-lg bg-gradient-to-r ${item.gradient} ${item.active ? 'shadow-lg' : 'group-hover:shadow-md'} transition-all duration-300`}>
-                    <item.icon className="h-5 w-5 text-white" />
+                  <div className="flex items-center space-x-3">
+                    <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                      <item.icon className="h-4 w-4 text-white" />
+                    </div>
+                    <span className={item.active ? 'font-semibold' : ''}>{item.label}</span>
+                  </div>
+                  {item.badge && (
+                    <Badge variant="secondary" className="text-xs bg-red-500/20 text-red-300 border-red-500/30">
+                      {item.badge}
+                    </Badge>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Journaling Section */}
+          <div className="px-6 py-4 border-b border-purple-500/20">
+            <h4 className="tech-font text-sm font-semibold cyber-text-accent mb-3 uppercase tracking-wider">
+              Journaling
+            </h4>
+            <div className="space-y-1">
+              {journalingItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={item.onClick}
+                  className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group ${
+                    item.active 
+                      ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/10 border-l-2 border-cyan-400 cyber-text-neon' 
+                      : 'cyber-text-secondary nav-hover'
+                  }`}
+                >
+                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} ${item.active ? 'shadow-lg' : 'group-hover:shadow-md'} transition-all duration-300`}>
+                    <item.icon className="h-4 w-4 text-white" />
                   </div>
                   <span className={item.active ? 'font-semibold' : ''}>{item.label}</span>
                 </button>
               ))}
-            </nav>
+            </div>
+          </div>
 
-            {/* Quick Stats */}
-            <div className="mt-8 p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20">
+          {/* Subscription & Support Section */}
+          <div className="px-6 py-4 border-b border-purple-500/20">
+            <h4 className="tech-font text-sm font-semibold cyber-text-accent mb-3 uppercase tracking-wider">
+              Subscription & Support
+            </h4>
+            <div className="space-y-1">
+              {supportItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={item.onClick}
+                  className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 modern-font text-sm group cyber-text-secondary nav-hover"
+                >
+                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${item.gradient} group-hover:shadow-md transition-all duration-300`}>
+                    <item.icon className="h-4 w-4 text-white" />
+                  </div>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Stats Section */}
+          <div className="px-6 py-4 flex-1">
+            <div className="cyber-card p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <TrendingUp className="h-5 w-5 cyber-text-neon" />
                 <span className="modern-font font-semibold cyber-text-primary">Your Archive</span>
@@ -251,6 +316,22 @@ const EntriesPage = ({ user, onLogout }) => {
                   <div className="cyber-text-secondary">Completion</div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Referral Section */}
+          <div className="px-6 py-4 border-t border-purple-500/20">
+            <div className="cyber-card p-4 text-center">
+              <UserPlus className="h-6 w-6 mx-auto mb-2 cyber-text-neon" />
+              <h4 className="tech-font text-sm font-semibold cyber-text-primary mb-1">
+                Refer a Friend
+              </h4>
+              <p className="modern-font text-xs cyber-text-secondary mb-3">
+                Earn up to 6 months free!
+              </p>
+              <Button size="sm" className="cyber-button-primary text-xs">
+                Invite Now!
+              </Button>
             </div>
           </div>
         </div>

@@ -57,10 +57,6 @@ const EntriesPage = ({ user, onLogout, isLightMode, toggleTheme }) => {
     onLogout();
   };
 
-  const handleLogout = () => {
-    onLogout();
-  };
-
 
 
   // Updated navigation structure to match Dashboard

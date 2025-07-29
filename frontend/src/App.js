@@ -5,6 +5,7 @@ import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import EntriesPage from "./components/EntriesPage";
 import UpgradePage from "./components/UpgradePage";
+import SignOutConfirmation from "./components/SignOutConfirmation";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -55,12 +55,12 @@ const EntriesPage = ({ user, onLogout }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   const handleLogout = () => {
-    if (showLogoutConfirm) {
-      onLogout();
-    } else {
-      setShowLogoutConfirm(true);
-      setTimeout(() => setShowLogoutConfirm(false), 5000);
-    }
+    setShowLogoutDialog(true);
+  };
+
+  const confirmLogout = () => {
+    setShowLogoutDialog(false);
+    onLogout();
   };
 
   // Updated navigation structure to match Dashboard

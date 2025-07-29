@@ -31,6 +31,16 @@ const LandingPage = ({ onLogin }) => {
     setShowAuthModal(false);
   };
 
+  const toggleAuthMode = () => {
+    setIsSignUp(!isSignUp);
+    setFormData({
+      fullName: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
+  };
+
   const handleStartJourney = () => {
     onLogin(mockUser);
   };

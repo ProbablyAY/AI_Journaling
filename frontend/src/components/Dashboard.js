@@ -156,7 +156,7 @@ const Dashboard = ({ user, onLogout }) => {
       onLogout();
     } else {
       setShowLogoutConfirm(true);
-      setTimeout(() => setShowLogoutConfirm(false), 3000);
+      setTimeout(() => setShowLogoutConfirm(false), 5000); // Increased timeout for better UX
     }
   };
 

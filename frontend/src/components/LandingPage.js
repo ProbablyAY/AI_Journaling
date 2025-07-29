@@ -259,6 +259,38 @@ const LandingPage = ({ onLogin }) => {
         </div>
       </div>
 
+      {/* Enhanced Stats Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="text-center mb-8">
+          <h2 className="tech-font text-3xl font-bold cyber-text-primary mb-4">
+            Trusted by Thousands
+          </h2>
+          <p className="modern-font cyber-text-secondary">
+            Join our growing community of mindful journalers
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {extendedStats.map((stat, index) => (
+            <div key={index} className="stats-card p-6 text-center">
+              <stat.icon className={`h-8 w-8 mx-auto mb-3 ${
+                stat.color === 'cyan' ? 'cyber-text-neon' :
+                stat.color === 'purple' ? 'cyber-text-accent' :
+                stat.color === 'green' ? 'text-green-400' :
+                stat.color === 'blue' ? 'text-blue-400' :
+                stat.color === 'pink' ? 'text-pink-400' :
+                'text-orange-400'
+              }`} />
+              <p className="tech-font text-xl font-bold cyber-text-primary">
+                {stat.value}
+              </p>
+              <p className="modern-font text-xs cyber-text-secondary">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Main Content Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 items-start">

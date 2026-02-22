@@ -1,0 +1,21 @@
+{
+  "name": "ai-journaling-worker",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "bullmq": "^5.44.0",
+    "dotenv": "^16.4.7",
+    "ioredis": "^5.4.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "prisma": "^6.4.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
